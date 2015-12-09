@@ -1,11 +1,11 @@
 
-var User = require('../models/user.js')
-  , qs = require('querystring')
-  , jwt = require('jwt-simple')
-  , request = require('request')
-  , config = require('../config.js')
-  , moment = require('moment')
-  , auth = require('./auth')
+var User = require('../models/user.js'), 
+    qs = require('querystring'), 
+    jwt = require('jwt-simple'), 
+    request = require('request'), 
+    config = require('../config.js'), 
+    moment = require('moment'), 
+    auth = require('./auth');
 
 module.exports = function(app) {
 
@@ -33,7 +33,7 @@ module.exports = function(app) {
         return res.status(401).send({ message: 'Wrong email or password' });
       }
       user.comparePassword(req.body.password, function(err, isMatch) {
-        console.log(isMatch)
+        console.log(isMatch);
         if (!isMatch) {
           return res.status(401).send({ message: 'Wrong email or password' });
         }
@@ -50,14 +50,17 @@ module.exports = function(app) {
       
       var user = new User({
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        username: req.body.username,
+        first: req.body.first,
+        last: req.body.last
       });
 
       user.save(function(err) {
-        if (err) { return res.status(400).send({err: err}) }
+        if (err) { return res.status(400).send({err: err}); }
 
         res.send({ token: auth.createJWT(user) });
       });
     });
   });
-}
+};

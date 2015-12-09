@@ -1,34 +1,41 @@
+//Require Moongoose/Bcrypt
 var mongoose = require('mongoose'),
     bcrypt = require('bcryptjs'),
     Schema = mongoose.Schema;
 
-// GETTER
+// Set a function to return all lowercase
 function toLower (v) {
   return v.toLowerCase();
 }
 
+//User Schema
 var UserSchema = new Schema({
-    created_at    : { type: Date }
-  , updated_at    : { type: Date }
-  , email         : { type: String, required: true, unique: true, trim: true, set: toLower }
-  , password      : { type: String, select: false }
-  , first         : { type: String, trim: true }
-  , last          : { type: String, trim: true }
-})
+    created_at: { type: Date }, 
+    updated_at: { type: Date }, 
+    email: { type: String, required: true, unique: true, trim: true, set: toLower }, 
+    password: { type: String, select: false }, 
+    username: { type: String, required: true, unique: true, trim: true }, 
+    first: { type: String, trim: true }, 
+    last: { type: String, trim: true },
+    waiver: { type: Boolean }
+});
 
+//Virtual method for fullname
 UserSchema.virtual('fullname').get(function() {
   return this.first + ' ' + this.last;
 });
 
+
+//Before saving user
 UserSchema.pre('save', function(next){
-  // SET CREATED_AT AND UPDATED_AT
+  // Set Created At and Updated At
   now = new Date();
   this.updated_at = now;
   if ( !this.created_at ) {
     this.created_at = now;
   }
 
-  // ENCRYPT PASSWORD
+  // Encrypt Password
   var user = this;
   if (!user.isModified('password')) {
     return next();
@@ -41,21 +48,12 @@ UserSchema.pre('save', function(next){
   });
 });
 
-
+//compare password method
 UserSchema.methods.comparePassword = function(password, done) {
   bcrypt.compare(password, this.password, function(err, isMatch) {
     done(err, isMatch);
   });
 };
-
-// SETTER
-// function obfuscate (cc) {
-//   return '****-****-****-' + cc.slice(cc.length-4, cc.length);
-// }
-
-// var AccountSchema = new Schema({
-//   creditCardNumber: { type: String, get: obfuscate }
-// });
 
 var User = mongoose.model('User', UserSchema);
 

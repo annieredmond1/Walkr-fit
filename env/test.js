@@ -1,6 +1,6 @@
-var port = 3001;
+// var port = 3001;
 
-module.exports = {
-  port: port,
-  db: 'mongodb://localhost/basic-auth'
-};
+// module.exports = {
+//   port: port,
+//   db: 'mongodb://localhost/basic-auth'
+// };
