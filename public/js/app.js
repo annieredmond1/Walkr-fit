@@ -19,7 +19,10 @@ angular.module('walkr-fit', ['walkr-fit.services',
         templateUrl: 'templates/profile',
         controller: 'ProfileCtrl'
       });
-
+      $routeProvider.when('/walks', {
+        templateUrl: 'templates/walk-index',
+        controller: 'WalkCtrl'
+      });
 
 
       $routeProvider.otherwise({redirectTo: '/'});
