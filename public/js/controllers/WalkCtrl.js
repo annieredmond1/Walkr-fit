@@ -3,8 +3,8 @@
 /* WALK Controllers */
 
 angular.module('walkr-fit')
-  .controller('WalkCtrl', ['$scope', '$http', 'Users', '$timeout', function($scope, $http, Users, $timeout) {
-
+  .controller('WalkCtrl', ['Walk', '$scope', '$http', 'Users', '$timeout', function(Walk, $scope, $http, Users, $timeout) {
+  		//for entering date
       $scope.dateTimeNow = function() {
         $scope.date = new Date();
       };
@@ -21,30 +21,27 @@ angular.module('walkr-fit')
         startingDay: 1,
         showWeeks: false
       };
-      
-      // Disable weekend selection
-      $scope.disabled = function(calendarDate, mode) {
-        return mode === 'day' && ( calendarDate.getDay() === 0 || calendarDate.getDay() === 6 );
-      };
-      
-      $scope.hourStep = 1;
-      $scope.minuteStep = 15;
 
-      $scope.timeOptions = {
-        hourStep: [1, 2, 3],
-        minuteStep: [1, 5, 10, 15, 25, 30]
+      //for entering location
+      $scope.autocompleteOptions = {
+          componentRestrictions: { country: 'usa' },
+          types: ['geocode']
       };
+      
+      //Get walks
+      $scope.walks = Walk.query();
 
-      $scope.showMeridian = true;
-      $scope.timeToggleMode = function() {
-        $scope.showMeridian = !$scope.showMeridian;
-      };
+      //Create a walk
+      $scope.walk = {};
+      $scope.newWalk = function() {
+      console.log('scope.walk is ', $scope.walk);
+      var walk = new Walk($scope.walk);
+      walk.$save(function(data) {
+        $scope.walks.unshift(data);
+        $scope.walk = {};
+
+      });
+    };
+
       
-      $scope.$watch("date", function(value) {
-        console.log('New date value:' + value);
-      }, true);
-      
-      $scope.resetHours = function() {
-        $scope.date.setHours(1);
-      };
   }]);
