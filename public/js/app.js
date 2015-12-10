@@ -4,7 +4,11 @@
 angular.module('walkr-fit', ['walkr-fit.services',
                               'ngRoute',
                               'ngResource',
-                              'satellizer'])
+                              'satellizer',
+                              'ui.bootstrap',
+                              'ui.bootstrap.datetimepicker'
+                             
+                              ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
       $routeProvider.when('/', {
@@ -15,6 +19,8 @@ angular.module('walkr-fit', ['walkr-fit.services',
         templateUrl: 'templates/profile',
         controller: 'ProfileCtrl'
       });
+
+
 
       $routeProvider.otherwise({redirectTo: '/'});
 

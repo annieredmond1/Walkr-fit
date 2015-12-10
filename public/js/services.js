@@ -60,4 +60,49 @@ angular.module('walkr-fit.services', [])
       return null;
     }
   };
-});
+})
+
+  .factory('Walks', function() {
+    // Might use a resource here that returns a JSON array
+
+    // Some fake testing data
+    var walks = [{
+      id: 1,
+      date: 'Ben',
+      time: 'Smith',
+      distance: 'bsmith',
+      owner: 2,
+      users: [1, 3]
+    }, {
+      id: 2,
+      date: 'Ben',
+      time: 'Smith',
+      distance: 'bsmith',
+      owner: 1,
+      users: [2, 3]
+    }, {
+      id: 3,
+      date: 'Ben',
+      time: 'Smith',
+      distance: 'bsmith',
+      owner: 1,
+      users: [2, 3]
+    }];
+
+    return {
+      all: function() {
+        return users;
+      },
+      remove: function(user) {
+        users.splice(users.indexOf(user), 1);
+      },
+      get: function(userId) {
+        for (var i = 0; i < users.length; i++) {
+          if (users[i].id === parseInt(userId)) {
+            return users[i];
+          }
+        }
+        return null;
+      }
+    };
+  });

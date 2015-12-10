@@ -5,6 +5,9 @@
     "angular": "latest",
     "angular-resource": "~1.4.7",
     "bootstrap": "latest",
-    "satellizer": "~0.12.5"
+    "satellizer": "~0.12.5",
+    "angular-ui-bootstrap-datetimepicker": "~0.14.0",
+    "ng-autocomplete": "*",
+    "angular-route": "~1.4.8"
   }
 }
