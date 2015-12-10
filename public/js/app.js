@@ -6,8 +6,8 @@ angular.module('walkr-fit', ['walkr-fit.services',
                               'ngResource',
                               'satellizer',
                               'ui.bootstrap',
-                              'ui.bootstrap.datetimepicker'
-                             
+                              'ui.bootstrap.datetimepicker',
+                              'google.places'
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {

@@ -8,6 +8,7 @@
     "satellizer": "~0.12.5",
     "angular-ui-bootstrap-datetimepicker": "~0.14.0",
     "ng-autocomplete": "*",
-    "angular-route": "~1.4.8"
+    "angular-route": "~1.4.8",
+    "angular-google-places-autocomplete": "~0.2.7"
   }
 }
