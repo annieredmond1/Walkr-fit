@@ -57,7 +57,7 @@
         </div>
       </li>
       <li ng-show="currentUser" class="dropdown">
-        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span class="status">Me</span><span class="caret"></span></a>
+        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span class="status">{{currentUser.first}}</span><span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/profile">Profile</a></li>
           <li><a href="/settings">Settings</a></li>

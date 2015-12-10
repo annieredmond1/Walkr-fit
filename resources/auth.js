@@ -1,7 +1,7 @@
-var jwt = require('jwt-simple')
-  , moment = require('moment')
-  , config = require('../config.js')
-  , User = require('../models/user.js');
+var jwt = require('jwt-simple'), 
+	moment = require('moment'), 
+	config = require('../config.js'), 
+	User = require('../models/user.js');
 
 module.exports = {
 	ensureAuthenticated: function(req, res, next) {
@@ -37,4 +37,4 @@ module.exports = {
 	  };
 	  return jwt.encode(payload, config.TOKEN_SECRET);
 	}
-}
+};

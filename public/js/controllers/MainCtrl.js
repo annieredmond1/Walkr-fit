@@ -2,7 +2,7 @@
 
 /* MAIN Controller */
 
-angular.module('basic-auth')
+angular.module('walkr-fit')
   .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http',  function ($scope, $rootScope, $location, $auth, $http) {
 
     // LOGIN/REGISTER
@@ -26,13 +26,13 @@ angular.module('basic-auth')
     $scope.signup = function() {
       $auth.signup($scope.user)
         .then(function(response) {
-          console.log(response)
+          console.log(response);
           $auth.setToken(response);
           $scope.isAuthenticated();
           $scope.user = {};
         })
         .catch(function(response) {
-          console.log(response)
+          console.log(response);
         });
     };
 
@@ -44,7 +44,7 @@ angular.module('basic-auth')
           $scope.user = {};
         })
         .catch(function(response) {
-          console.log(response)
+          console.log(response);
         });
     };
 
@@ -53,7 +53,7 @@ angular.module('basic-auth')
         .then(function() {
           $auth.removeToken();
           $scope.currentUser = null;
-          $location.path('/')
+          $location.path('/');
         });
     };
   }]);

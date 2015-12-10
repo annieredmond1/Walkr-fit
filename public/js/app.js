@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('basic-auth', ['basic-auth.services',
+angular.module('walkr-fit', ['walkr-fit.services',
                               'ngRoute',
                               'ngResource',
                               'satellizer'])
