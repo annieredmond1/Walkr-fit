@@ -5,7 +5,7 @@
 
 
 <ul class='media-list'>
-  <li ng-repeat="walk in walks" class='media'>
+  <li ng-repeat="walk in walks | orderBy:'date'" class='media'>
   <div class="media-left">
         <div class="container date-show">
           <div class="row date-top text-center white-font black-back">{{walk.date | date: 'MMMM'}}</div>

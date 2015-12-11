@@ -3,15 +3,16 @@
 /* WALK Controllers */
 
 angular.module('walkr-fit')
-  .controller('WalkCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
-  		//for entering date
+  .controller('NewWalkCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
+  		console.log('NewWalkCtrl active');
+      //for entering date
       $scope.dateTimeNow = function() {
         $scope.date = new Date();
       };
       $scope.dateTimeNow();
       
       
-        $scope.minDate = Date.now();
+      $scope.minDate = Date.now();
       
        
       $scope.maxDate = new Date('2016-12-01');
@@ -31,11 +32,23 @@ angular.module('walkr-fit')
       //Get walks
       $scope.walks = Walk.query();
       
-      	
+      
+
 
       //find current user
       $scope.currentUser = Auth.currentUser();
       console.log('current user is: ', $scope.currentUser);
+
+      //show new walk form when create walk button is clicked
+      $scope.createWalkForm = false;
+      $scope.createWalkButton = function() {
+        
+          $scope.createWalkForm = true;
+          
+     
+        console.log('create walk button clicked');
+        console.log('$scope.createWalkForm is: ', $scope.createWalkForm);
+      };
 
       //Create a walk
       $scope.walk = {};
@@ -46,9 +59,23 @@ angular.module('walkr-fit')
       walk.$save(function(data) {
         $scope.walks.unshift(data);
         $scope.walk = {};
+        $scope.createWalkForm = false;
+        console.log('after save createWalkForm is: ', $scope.createWalkForm);
 
       });
     };
 
       
-  }]);
+  }])
+.controller('WalkListCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
+  console.log('WalkListCtrl active');
+  $scope.currentUser = Auth.currentUser();
+  //Get walks
+      $scope.walks = Walk.query();
+}]);
+
+
+
+
+
+

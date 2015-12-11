@@ -1,15 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3"><br/>
-      <h4>{{user.first}} {{user.last}}</h4>
-    </div>
     <div class="col-sm-9">
       <div class="page-header">
-        <h4></h4>
+        <h4>{{user.username}}</h4>
       </div>
     </div>
-    <div class="col-sm-9">
-      <ng-include src="'templates/newWalkForm'"></ng-include> 
-    </div>
   </div>
+</div>
+<div class="container" ng-controller="NewWalkCtrl">
+  <button ng-click="createWalkButton()">Create a Walk</button>
+  <div class="col-sm-9" ng-show="createWalkForm">
+    <ng-include src="'templates/newWalkForm'"></ng-include> 
+  </div>
+
+
+  <h4>My Walks</h4>
 </div>

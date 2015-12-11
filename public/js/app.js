@@ -21,7 +21,7 @@ angular.module('walkr-fit', ['walkr-fit.services',
       });
       $routeProvider.when('/walks', {
         templateUrl: 'templates/walk-index',
-        controller: 'WalkCtrl'
+        controller: 'WalkListCtrl'
       });
 
 
