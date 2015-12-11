@@ -1,0 +1,20 @@
+<form ng-controller="WalkCtrl">
+  <div class="form-group">
+    <label for="">Name of Walk</label>
+    <input type="text" ng-model="walk.name" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">Date</label>
+    <ng-include src="'templates/datetime'"></ng-include>
+  </div>
+  <div class="form-group">
+    <label for="">Location</label>
+    <input g-places-autocomplete options="autocompleteOptions" ng-model="walk.location" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">Distance (in miles)</label>
+    <input type="text" ng-model="walk.distance" class="form-control"/>
+  </div>
+  
+  <button type="submit" ng-click="newWalk()" class="btn btn-info">Create Walk</button>
+</form>
