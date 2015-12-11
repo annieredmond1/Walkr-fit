@@ -3,7 +3,7 @@
 /* WALK Controllers */
 
 angular.module('walkr-fit')
-  .controller('WalkCtrl', ['Walk', '$scope', '$http', 'Users', '$timeout', function(Walk, $scope, $http, Users, $timeout) {
+  .controller('WalkCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
   		//for entering date
       $scope.dateTimeNow = function() {
         $scope.date = new Date();
@@ -30,11 +30,18 @@ angular.module('walkr-fit')
       
       //Get walks
       $scope.walks = Walk.query();
+      
+      	
+
+      //find current user
+      $scope.currentUser = Auth.currentUser();
+      console.log('current user is: ', $scope.currentUser);
 
       //Create a walk
       $scope.walk = {};
       $scope.newWalk = function() {
       console.log('scope.walk is ', $scope.walk);
+      $scope.walk.owner = $scope.currentUser;
       var walk = new Walk($scope.walk);
       walk.$save(function(data) {
         $scope.walks.unshift(data);

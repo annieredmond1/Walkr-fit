@@ -21,11 +21,11 @@ module.exports = function(app) {
    // var walk = new Walk( req.body );
    // walk.save(function (err, walk) {
     Walk.create(req.body, function(err, walk){
+        console.log('req.body.owner is: ', req.body.owner );
       console.log("walk created is: ", walk);
-      if (err) { 
-        console.log('err is: ', err);
-        return res.send(err); }
-
+      if (err) { return res.send(err); }
+        walk.owner.push(req.body.owner);
+        console.log('after push walk is: ', walk);
       res.status(201).send(walk);
     });
   });
