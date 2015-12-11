@@ -30,6 +30,8 @@ angular.module('walkr-fit')
       
       //Get walks
       $scope.walks = Walk.query();
+      
+      	
 
       //find current user
       $scope.currentUser = Auth.currentUser();

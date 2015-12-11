@@ -1,7 +1,25 @@
-<h1>All Walks</h1>
 
-<ul class='list-group'>
-  <li ng-repeat="walk in walks" class='list-group-item'>
-    <img src="http://placehold.it/150x150">{{walk.name}}  {{walk.distance}} 
+<div class="container">
+  
+<h1 class="text-center">All Walks</h1>
+
+
+<ul class='media-list'>
+  <li ng-repeat="walk in walks" class='media'>
+  <div class="media-left">
+        <div class="container date-show">
+          <div class="row date-top text-center white-font black-back">{{walk.date | date: 'MMMM'}}</div>
+          <div class="row date-middle text-center">{{walk.date | date: 'd'}}</div>
+          <div class="row date-bottom text-center white-font black-back">{{walk.date | date: 'EEEE'}}</div>
+        </div>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{walk.name}} | <small>{{walk.date | date: 'MMMM d' }} at {{walk.date | date: 'h:mm a'}}</small></h4>
+      <p>{{walk.distance}} mile walk starting at {{walk.location.formatted_address}}</p>
+        
+    </div>
+      
+     
   </li>
 </ul>
+</div>

@@ -10,6 +10,10 @@
 /*for ui.bootstrap*/
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
+
+.body {
+	font-family: 'Roboto', sans-serif;
+}
 .jumbotron {
   padding:100px 0 130px 0;
 }
@@ -33,4 +37,23 @@ a {
 .dropdown-form {
   padding: 17px;
   width: 300px;
+}
+
+.date-show {
+	width: 100px;
+	height: 100px;
+	margin: 0px 30px;
+	border: 2px solid black;
+}
+
+.white-font {
+	color: white;
+}
+.black-back {
+	background-color: black;
+}
+
+.date-middle {
+	min-height: 50px;
+	font-size: 25px;
 }
