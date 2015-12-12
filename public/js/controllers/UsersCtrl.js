@@ -9,6 +9,6 @@ angular.module('walkr-fit')
     });
 
     $scope.myWalks = Walk.myWalks();
-
+    
     
   }]);

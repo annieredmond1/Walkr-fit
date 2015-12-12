@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			{{walk.name}}
-			<h1>Walk show page</h1>
+			<h1>{{walk.name}}</h1>
+			<h3>{{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
-			
+			<h2>Who's going?</h2>
 		</div>
 	</div>
 </div>

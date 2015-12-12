@@ -28,8 +28,8 @@ module.exports = function(app) {
   });
 
   //get walk by id
-   app.get('/api/walks/:walk_id',function(req,res){   
-    Walk.findById(req.params.walk_id, function(err, walk) {
+   app.get('/api/walks/:id',function(req,res){   
+    Walk.findById(req.params.id, function(err, walk) {
       if (err) { return res.status(404).send(err); }
       console.log("walk is: ", walk);
       res.send(walk); 

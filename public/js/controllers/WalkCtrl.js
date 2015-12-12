@@ -73,7 +73,7 @@ angular.module('walkr-fit')
 
       
   }])
-.controller('WalkListCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
+.controller('WalkListCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', function(Walk, Auth, $scope, $http, $timeout, $location) {
   console.log('WalkListCtrl active');
 
   $scope.currentUser = Auth.currentUser();
@@ -81,16 +81,32 @@ angular.module('walkr-fit')
   //Get walks
   $scope.walks = Walk.query();
   console.log("walks are: ", $scope.walks);
+
+  $scope.walkShow = function(walk) {
+      Walk.get({ id: walk._id }, function(walk) {
+        $scope.walk = walk;
+    console.log('walk is; ', $scope.walk);
+    $location.path('/walks/' + walk._id);
+    });
+  };
+  
 }])
-.controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
-  console.log('WalkListCtrl active');
+.controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$routeParams', function(Walk, Auth, $scope, $http, $timeout, $location, $routeParams) {
+  console.log('WalkShowCtrl active');
 
   $scope.currentUser = Auth.currentUser();
 
-  //Get walks
-  $scope.walk = Walk.query();
-  console.log("walks are: ", $scope.walks);
+  //Get walk
+  $scope.walk = Walk.get({ id: $routeParams.id });
+  console.log("walk is: ", $scope.walk);
+
+
+  
 }]);
+
+
+
+
 
 
 

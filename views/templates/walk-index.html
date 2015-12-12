@@ -12,7 +12,7 @@
 
       
       <ul class='media-list'>
-        <li ng-repeat="walk in walks | orderBy:'date' | filter:search:strict"  class='media'>
+        <li ng-click="walkShow(walk)" ng-repeat="walk in walks | orderBy:'date' | filter:search:strict"  class='media'>
           <div class="media-left">
             
               <div class="row date-top text-center white-font black-back">
