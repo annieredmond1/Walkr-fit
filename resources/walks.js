@@ -9,6 +9,7 @@ var Walk = require('../models/walk.js'),
 
 module.exports = function(app) {
 
+  //get all walks
   app.get('/api/walks', function(req, res){
     // INDEX - GET ALL POSTS
     Walk.find().sort('-created_at').exec(function(err, walks) {
@@ -17,13 +18,22 @@ module.exports = function(app) {
     });    
   });
 
-
+  //get walks owned by current user
   app.get('/api/my-walks', auth.ensureAuthenticated, function(req, res){
     // INDEX - GET ALL POSTS
     Walk.find({owner: req.userId}).sort('-created_at').exec(function(err, walks) {
       if (err) { return res.status(404).send(err); }
       res.send(walks); 
     });    
+  });
+
+  //get walk by id
+   app.get('/api/walks/:walk_id',function(req,res){   
+    Walk.findById(req.params.walk_id, function(err, walk) {
+      if (err) { return res.status(404).send(err); }
+      console.log("walk is: ", walk);
+      res.send(walk); 
+    });
   });
 
   // CREATE

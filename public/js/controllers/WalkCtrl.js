@@ -16,6 +16,25 @@ angular.module('walkr-fit')
         startingDay: 1,
         showWeeks: false
       };
+      $scope.hourStep = 1;
+      $scope.minuteStep = 15;
+      $scope.timeOptions = {
+        hourStep: [1, 2, 3],
+        minuteStep: [1, 5, 10, 15, 25, 30]
+      };
+      
+      $scope.showMeridian = true;
+      $scope.timeToggleMode = function() {
+        $scope.showMeridian = !$scope.showMeridian;
+      };
+          
+      $scope.$watch("date", function(value) {
+        console.log('New date value:' + value);
+      }, true);
+           
+      $scope.resetHours = function() {
+        $scope.date.setHours(1);
+      };
 
       //for entering location
       $scope.autocompleteOptions = {
@@ -61,6 +80,15 @@ angular.module('walkr-fit')
 
   //Get walks
   $scope.walks = Walk.query();
+  console.log("walks are: ", $scope.walks);
+}])
+.controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
+  console.log('WalkListCtrl active');
+
+  $scope.currentUser = Auth.currentUser();
+
+  //Get walks
+  $scope.walk = Walk.query();
   console.log("walks are: ", $scope.walks);
 }]);
 
