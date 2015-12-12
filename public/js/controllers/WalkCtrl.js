@@ -10,14 +10,8 @@ angular.module('walkr-fit')
         $scope.date = new Date();
       };
       $scope.dateTimeNow();
-      
-      
       $scope.minDate = Date.now();
-      
-       
       $scope.maxDate = new Date('2016-12-01');
-      
-
       $scope.dateOptions = {
         startingDay: 1,
         showWeeks: false
@@ -71,7 +65,7 @@ angular.module('walkr-fit')
   console.log('WalkListCtrl active');
   $scope.currentUser = Auth.currentUser();
   //Get walks
-      $scope.walks = Walk.query();
+  $scope.walks = Walk.query();
 }]);
 
 

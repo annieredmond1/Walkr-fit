@@ -23,6 +23,10 @@ angular.module('walkr-fit', ['walkr-fit.services',
         templateUrl: 'templates/walk-index',
         controller: 'WalkListCtrl'
       });
+      $routeProvider.when('/createwalk', {
+        templateUrl: 'templates/newWalkForm',
+        controller: 'NewWalkCtrl'
+      });
 
 
       $routeProvider.otherwise({redirectTo: '/'});

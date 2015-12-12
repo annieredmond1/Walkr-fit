@@ -7,14 +7,94 @@
     </div>
   </div>
 </div>
-<div class="container" ng-controller="NewWalkCtrl">
-  <button ng-click="createWalkButton()">Create a Walk</button>
-  <div class="col-sm-9" ng-show="createWalkForm">
-    <ng-include src="'templates/newWalkForm'"></ng-include> 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div ng-controller="NewWalkCtrl">
+        <button ng-click="createWalkButton()">Create a Walk</button>
+        <div ng-show="createWalkForm">
+          <ng-include src="'templates/newWalkForm'"></ng-include> 
+        </div>
+
+        <a href="/walks"><button>Find a Walk!</button></a>
+
+
+      </div>
+      
+    </div>
+    <div class="col-md-9">
+      
+      <h1 class="text-center">My Walks</h1>
+
+      <div class="list-group">
+        <div class="list-group-item">
+          <div class="row-action-primary">
+            <i class="material-icons">folder</i>
+          </div>
+          <div class="row-content">
+            <div class="action-secondary"><i class="material-icons">face</i></div>
+            <h4 class="list-group-item-heading">Tile with an icon</h4>
+
+            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+          </div>
+        </div>
+        <div class="list-group-separator"></div>
+        <div class="list-group-item">
+          <div class="row-action-primary">
+            <i class="material-icons">folder</i>
+          </div>
+          <div class="row-content">
+            <div class="action-secondary"><i class="material-icons">info</i></div>
+            <h4 class="list-group-item-heading">Tile with an icon</h4>
+
+            <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+          </div>
+        </div>
+        <div class="list-group-separator"></div>
+        <div class="list-group-item">
+          <div class="row-action-primary">
+            <i class="material-icons">folder</i>
+          </div>
+          <div class="row-content">
+            <div class="action-secondary"><i class="material-icons">info</i></div>
+            <h4 class="list-group-item-heading">Tile with an icon</h4>
+
+            <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+          </div>
+        </div>
+        <div class="list-group-separator"></div>
+      </div>
+
+      <ul class='media-list'>
+        <li ng-repeat="walk in myWalks | orderBy:'date'" class='media'>
+        <div class="media-left">
+          
+            <div class="row date-top text-center white-font black-back">
+            {{walk.date | date: 'MMM'}}
+            </div>
+            <div class="row date-middle text-center">
+            {{walk.date | date: 'd'}}
+            </div>
+            <div class="row date-bottom text-center white-font black-back">
+            {{walk.date | date: 'EEEE'}}
+            </div>
+          
+        </div>
+        <div class="media-body">
+          <div class="panel panel-info">
+            <div class="panel-heading"><h4 class="white-font">{{walk.name}} | <small>{{walk.date | date: 'MMMM d' }} at {{walk.date | date: 'h:mm a'}}</small></h4>
+            </div>
+            <div class="panel-body">
+              <h6>{{walk.distance}} mile walk starting at {{walk.location.formatted_address}}</h6>
+            </div>
+          </div>  
+          <div class="panel-footer">Footer</div>
+        </div>
+            
+           
+        </li>
+      </ul>
+    </div>
   </div>
-
-  <a href="/walks"><button>Find a Walk!</button></a>
-
-
-  <h4>My Walks</h4>
+  
 </div>

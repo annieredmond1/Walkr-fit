@@ -12,7 +12,10 @@
 
 
 .body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Muli', sans-serif;
+}
+h1, h2, h3, h4, h5 {
+	font-family: 'Ovo', serif;
 }
 .jumbotron {
   padding:100px 0 130px 0;
@@ -39,11 +42,10 @@ a {
   width: 300px;
 }
 
-.date-show {
-	width: 100px;
-	height: 100px;
-	margin: 0px 30px;
+.media-left {
+	min-width: 120px;
 	border: 2px solid black;
+	padding: 0px;
 }
 
 .white-font {
@@ -53,7 +55,40 @@ a {
 	background-color: black;
 }
 
+.date-top {
+	width: 100%;
+	height: 67px;
+	font-size: 30px;
+	margin-left: 0px;
+}
+
 .date-middle {
-	min-height: 50px;
-	font-size: 25px;
+	width: 100%;
+	font-size: 30px;
+	margin-left: 0px;
+	font-weight: bolder;
+}
+
+.date-bottom {
+	width: 100%;
+	height: 43px;
+	font-size: 15px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	margin-top: 12px;
+}
+
+.panel {
+	margin-bottom: 0px;
+}
+
+.media {
+	border: 1px solid black;
+}
+
+.new-walk-form {
+	box-shadow: 1px 1px 1px black;
+	border: 1px solid black;
+	padding: 30px;
+	margin: 50px auto;
 }

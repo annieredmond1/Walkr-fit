@@ -3,9 +3,10 @@
   
 <h1 class="text-center">All Walks</h1>
 
+<label>Search: <input ng-model="search.$"></label> <br>
 
 <ul class='media-list'>
-  <li ng-repeat="walk in walks | orderBy:'date'" class='media'>
+  <li ng-repeat="walk in walks | orderBy:'date' | filter:search" class='media'>
   <div class="media-left">
         <div class="container date-show">
           <div class="row date-top text-center white-font black-back">{{walk.date | date: 'MMMM'}}</div>

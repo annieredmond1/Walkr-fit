@@ -4,13 +4,23 @@ var Walk = require('../models/walk.js'),
     qs = require('querystring'),  
     request = require('request'), 
     config = require('../config.js'), 
-    moment = require('moment');
+    moment = require('moment'),
+    auth = require('./auth');
 
 module.exports = function(app) {
 
   app.get('/api/walks', function(req, res){
     // INDEX - GET ALL POSTS
     Walk.find().sort('-created_at').exec(function(err, walks) {
+      if (err) { return res.status(404).send(err); }
+      res.send(walks); 
+    });    
+  });
+
+
+  app.get('/api/my-walks', auth.ensureAuthenticated, function(req, res){
+    // INDEX - GET ALL POSTS
+    Walk.find({owner: req.userId}).sort('-created_at').exec(function(err, walks) {
       if (err) { return res.status(404).send(err); }
       res.send(walks); 
     });    

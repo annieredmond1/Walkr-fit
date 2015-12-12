@@ -21,6 +21,9 @@ angular.module('walkr-fit.services', [])
 
   .factory('Walk', function($resource, $window) {
   return $resource('/api/walks/:id', { id: '@_id'}, {
+    myWalks: {
+      method: 'GET', url: '/api/my-walks', isArray: true
+    },
     update: {
       method: 'PUT' // this method issues a PUT request
     }
