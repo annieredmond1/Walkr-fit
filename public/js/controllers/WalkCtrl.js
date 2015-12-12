@@ -3,7 +3,7 @@
 /* WALK Controllers */
 
 angular.module('walkr-fit')
-  .controller('NewWalkCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$window', function(Walk, Auth, $scope, $http, $timeout, $window) {
+  .controller('NewWalkCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$window', '$location', function(Walk, Auth, $scope, $http, $timeout, $window, $location) {
   		console.log('NewWalkCtrl active');
       //for entering date
       $scope.dateTimeNow = function() {
@@ -59,15 +59,12 @@ angular.module('walkr-fit')
       //Create a walk
       $scope.walk = {};
       $scope.newWalk = function() {
-      console.log('scope.walk is ', $scope.walk);
       $scope.walk.owner = $scope.currentUser;
       var walk = new Walk($scope.walk);
       walk.$save(function(data) {
         $scope.walks.unshift(data);
         $scope.walk = {};
-        $scope.createWalkForm = false;
-        console.log('after save createWalkForm is: ', $scope.createWalkForm);
-
+        $location.path('/walks/' + data._id);
       });
     };
 
@@ -77,6 +74,8 @@ angular.module('walkr-fit')
   console.log('WalkListCtrl active');
 
   $scope.currentUser = Auth.currentUser();
+
+  
 
   //Get walks
   $scope.walks = Walk.query();
@@ -95,12 +94,22 @@ angular.module('walkr-fit')
   console.log('WalkShowCtrl active');
 
   $scope.currentUser = Auth.currentUser();
-
+  var owner;
   //Get walk
-  $scope.walk = Walk.get({ id: $routeParams.id });
+  $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
+    owner = w.owner[0];
+    console.log('w.owner is: ', owner);
+    $scope.walkOwner = (($scope.currentUser._id == owner)? true : false);
+    console.log('walkOwner is: ', $scope.walkOwner);
+  });
   console.log("walk is: ", $scope.walk);
 
+  //Setting what to show on page
 
+  // $scope.walkOwner = (($scope.currentUser._id == owner)? true : false);
+  // console.log('currentUser._id is: ', $scope.currentUser._id);
+  // console.log('owner is: ', owner);
+  // console.log('walkOwner is: ', $scope.walkOwner);
   
 }]);
 

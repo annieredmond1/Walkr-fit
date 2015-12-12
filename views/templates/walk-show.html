@@ -1,8 +1,22 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			<h1>{{walk.name}}</h1>
-			<h3>{{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}
+			<div class="card card-block walk-show-card">
+			  <h1 class="card-text">{{walk.name}}</h1>
+				<br>
+				<h4 class="card-text">
+				When: {{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}<br><br>
+				Where: {{walk.location.formatted_address}}
+				<br><br>
+				Distance: {{walk.distance}} mi.<br><br>
+				</h4>
+
+				<p class="card-text">{{walk.description}}</p>
+				<div ng-show="walkOwner" class="owner-buttons">
+				  <button class="card-link">Edit Walk</button>
+				  <button class="card-link">Cancel Walk</button>
+				</div>
+			</div>
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
 			<h2>Who's going?</h2>

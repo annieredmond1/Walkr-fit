@@ -22,7 +22,7 @@
     <div class="col-sm-8 col-sm-offset-1">
       <h1 class="text-center">My Walks</h1><br>
       <ul class='media-list'>
-        <li ng-repeat="walk in myWalks | orderBy:'date'" class='media'>
+        <li ng-click="walkShow(walk)" ng-repeat="walk in myWalks | orderBy:'date'" class='media'>
           <div class="media-left">
             
               <div class="row date-top text-center white-font black-back">
