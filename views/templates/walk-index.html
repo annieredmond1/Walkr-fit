@@ -1,26 +1,40 @@
 
 <div class="container">
-  
-<h1 class="text-center">All Walks</h1>
+  <div class="row">
+    <div class="col-sm-4">
+    <h3>Search Options</h3>
+      <label>By walk name or address:<br> <input ng-model="search.$"></label> <br>
 
-<label>Search: <input ng-model="search.$"></label> <br>
-
-<ul class='media-list'>
-  <li ng-repeat="walk in walks | orderBy:'date' | filter:search" class='media'>
-  <div class="media-left">
-        <div class="container date-show">
-          <div class="row date-top text-center white-font black-back">{{walk.date | date: 'MMMM'}}</div>
-          <div class="row date-middle text-center">{{walk.date | date: 'd'}}</div>
-          <div class="row date-bottom text-center white-font black-back">{{walk.date | date: 'EEEE'}}</div>
-        </div>
     </div>
-    <div class="media-body">
-      <h4 class="media-heading">{{walk.name}} | <small>{{walk.date | date: 'MMMM d' }} at {{walk.date | date: 'h:mm a'}}</small></h4>
-      <p>{{walk.distance}} mile walk starting at {{walk.location.formatted_address}}</p>
-        
-    </div>
+    <div class="col-sm-8">
       
-     
-  </li>
-</ul>
+      <h1 class="text-center">All Walks</h1>
+
+      
+      <ul class='media-list'>
+        <li ng-repeat="walk in walks | orderBy:'date' | filter:search:strict"  class='media'>
+          <div class="media-left">
+            
+              <div class="row date-top text-center white-font black-back">
+              {{walk.date | date: 'MMM'}}
+              </div>
+              <div class="row date-middle text-center">
+              {{walk.date | date: 'd'}}
+              </div>
+              <div class="row date-bottom text-center white-font black-back">
+              {{walk.date | date: 'EEEE'}}
+              </div>
+            
+          </div>
+          <div class="media-body">
+              <h4 class="media-heading">{{walk.name}}<br><small>{{walk.date | date: 'MMMM d' }} at {{walk.date | date: 'h:mm a'}}</small></h4>
+                <h5>{{walk.distance}} mi.<br>
+                {{walk.location.formatted_address}}</h5>
+          </div>
+          <hr>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
 </div>

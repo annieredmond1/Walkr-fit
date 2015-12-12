@@ -26,7 +26,6 @@ angular.module('walkr-fit')
       //Get walks
       $scope.walks = Walk.query();
       
-      
 
 
       //find current user
@@ -57,9 +56,12 @@ angular.module('walkr-fit')
   }])
 .controller('WalkListCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
   console.log('WalkListCtrl active');
+
   $scope.currentUser = Auth.currentUser();
+
   //Get walks
   $scope.walks = Walk.query();
+  console.log("walks are: ", $scope.walks);
 }]);
 
 
