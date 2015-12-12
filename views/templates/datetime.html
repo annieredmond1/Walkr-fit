@@ -1,20 +1,14 @@
 <pre>Selected time and date is: <em>{{date | date:'shortTime' }}, {{date | date:'fullDate' }}</em></pre>
 
-      <datetimepicker 
-      min-date='{{minDate}}' 
-      hour-step="hourStep" 
-      minute-step="minuteStep" 
-      ng-model="walk.date" 
-      show-meridian="showMeridian" 
-      date-format="dd-MMM-yyyy" 
-      date-options="dateOptions"
+      <datetimepicker min-date='{{minDate}}' hour-step="hourStep" 
+      minute-step="minuteStep" ng-model="walk.date" show-meridian="showMeridian" 
+      date-format="dd-MMM-yyyy" date-options="dateOptions"
       date-disabled="disabled(date, mode)" 
       readonly-date="false"
       hidden-time="false"
       hidden-date="false" 
       show-spinners="true"
-      readonly-time="false">
-      </datetimepicker>
+      readonly-time="false"></datetimepicker>
 
 
       

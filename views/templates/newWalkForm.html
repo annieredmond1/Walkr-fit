@@ -1,6 +1,9 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     <form class='form-horizontal new-walk-form'>
+      <button type="button" class="close" ng-click="backButton()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     <fieldset>
     <legend>Create a new walk!</legend>
       <div class="form-group">
@@ -19,7 +22,6 @@
         <label for="">How many miles will you walk?</label>
         <input type="text" ng-model="walk.distance" class="form-control"/>
       </div>
-      <button type="submit" ng-click="newWalk()" class="btn btn-default pull-right">Cancel</button>
       <button type="submit" ng-click="newWalk()" class="btn btn-info pull-right">Create Walk</button>
       
     </fieldset>

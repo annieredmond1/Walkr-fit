@@ -3,7 +3,7 @@
 /* WALK Controllers */
 
 angular.module('walkr-fit')
-  .controller('NewWalkCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', function(Walk, Auth, $scope, $http, $timeout) {
+  .controller('NewWalkCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$window', function(Walk, Auth, $scope, $http, $timeout, $window) {
   		console.log('NewWalkCtrl active');
       //for entering date
       $scope.dateTimeNow = function() {
@@ -33,15 +33,9 @@ angular.module('walkr-fit')
       $scope.currentUser = Auth.currentUser();
       console.log('current user is: ', $scope.currentUser);
 
-      //show new walk form when create walk button is clicked
-      $scope.createWalkForm = false;
-      $scope.createWalkButton = function() {
-        
-          $scope.createWalkForm = true;
-          
-     
-        console.log('create walk button clicked');
-        console.log('$scope.createWalkForm is: ', $scope.createWalkForm);
+      //go back button
+      $scope.backButton = function() {
+         $window.history.back();
       };
 
       //Create a walk
