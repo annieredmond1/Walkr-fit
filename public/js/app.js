@@ -19,13 +19,13 @@ angular.module('walkr-fit', ['walkr-fit.services',
         templateUrl: 'templates/profile',
         controller: 'ProfileCtrl'
       });
-      $routeProvider.when('/walks', {
-        templateUrl: 'templates/walk-index',
-        controller: 'WalkListCtrl'
-      });
       $routeProvider.when('/createwalk', {
         templateUrl: 'templates/newWalkForm',
         controller: 'NewWalkCtrl'
+      });
+      $routeProvider.when('/walks', {
+        templateUrl: 'templates/walk-index',
+        controller: 'WalkListCtrl'
       });
       $routeProvider.when('/walks/:id', {
         templateUrl: 'templates/walk-show',

@@ -16,7 +16,7 @@
 				  <button class="card-link">Edit Walk</button>
 				  <button class="card-link">Cancel Walk</button>
 				</div>
-				<div ng-hide="walkOwner" class="non-owner-buttons">
+				<div ng-hide="guest || walkOwner" class="non-owner-buttons">
 				  <button class="card-link">RSVP</button>
 				  
 				</div>
