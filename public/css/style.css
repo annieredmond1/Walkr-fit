@@ -111,7 +111,9 @@ a {
     background-color: #78FA89;
   }
 
-
+.media {
+	cursor: pointer; 
+}
 
 
 

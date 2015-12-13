@@ -2,6 +2,8 @@ TODO
 
 modals not closing on redirect
 
+calendar modal not closing
+
 validations
 
 search/filter options
@@ -10,6 +12,5 @@ view walks on map
 
 add sign in or sign up pop up when guest clicks on walk
 
-add something to let users know they can click on walks
 
 set permissions on edit page
