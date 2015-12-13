@@ -102,3 +102,18 @@ a {
 .card {
 	margin-top: 20px;
 }
+
+.input-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .input-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+
+
+
+
+
+
+
