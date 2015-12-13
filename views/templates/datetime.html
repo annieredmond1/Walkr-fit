@@ -1,6 +1,16 @@
-<!-- <pre>Selected time and date is: <em>{{date | date:'shortTime' }}, {{date | date:'fullDate' }}</em></pre>
 
-      <datetimepicker min-date='{{minDate}}' hour-step="hourStep" 
+
+    <!--   <pre>Selected time and date is: <em>{{date | date:'shortTime' }}, {{date | date:'fullDate' }}</em></pre> -->
+
+      
+
+      <div class="dropdown">
+  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">{{date | date:'fullDate' }} at {{date | date:'shortTime' }}
+    <div class="input-group"><input type="text" class="form-control" data-ng-model="data.dateDropDownInput"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    </div>
+  </a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    <datetimepicker min-date="minDate" hour-step="hourStep" 
       minute-step="minuteStep" ng-model="walk.date" show-meridian="showMeridian" 
       date-format="dd-MMM-yyyy" date-options="dateOptions"
       date-disabled="disabled(date, mode)" 
@@ -9,16 +19,5 @@
       hidden-date="false" 
       show-spinners="true"
       readonly-time="false"></datetimepicker>
- -->
-
-      <pre>Selected time and date is: <em>{{date | date:'shortTime' }}, {{date | date:'fullDate' }}</em></pre>
-
-      <datetimepicker min-date="minDate" hour-step="hourStep" 
-      minute-step="minuteStep" ng-model="date" show-meridian="showMeridian" 
-      date-format="dd-MMM-yyyy" date-options="dateOptions"
-      date-disabled="disabled(date, mode)" 
-      readonly-date="false"
-      hidden-time="false"
-      hidden-date="false" 
-      show-spinners="true"
-      readonly-time="false"></datetimepicker>
+  </ul>
+</div>

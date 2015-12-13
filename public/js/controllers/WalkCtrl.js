@@ -61,6 +61,7 @@ angular.module('walkr-fit')
       $scope.newWalk = function() {
       $scope.walk.owner = $scope.currentUser;
       var walk = new Walk($scope.walk);
+      console.log('walk created is: ', walk);
       walk.$save(function(data) {
         $scope.walks.unshift(data);
         $scope.walk = {};

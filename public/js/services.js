@@ -22,14 +22,14 @@ angular.module('walkr-fit.services', [])
   
 
   .factory('Walk', function($resource, $window) {
-  return $resource('/api/walks/:id', { id: '@_id'}, {
-   update: {
-      method: 'PUT' 
-    },
-     myWalks: {
-      method: 'GET', url: '/api/my-walks', isArray: true
-    }
-  });
+    return $resource('/api/walks/:id', { id: '@_id'}, {
+     update: {
+        method: 'PUT' 
+      },
+       myWalks: {
+        method: 'GET', url: '/api/my-walks', isArray: true
+      }
+    });
 
 
 });
