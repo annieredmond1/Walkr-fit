@@ -9,10 +9,12 @@ angular.module('walkr-fit.services', [])
     return {
       currentUser: function() {
         var user = $auth.getPayload();
-        var currentUser = {
-          _id: user.sub
-          
-        };
+        var currentUser = {_id: 1 };
+        if(user) {
+          currentUser = {
+            _id: user.sub 
+          };
+        }
         return currentUser;
       }
     };

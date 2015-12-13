@@ -73,6 +73,7 @@ angular.module('walkr-fit')
 .controller('WalkListCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', function(Walk, Auth, $scope, $http, $timeout, $location) {
   console.log('WalkListCtrl active');
 
+
   $scope.currentUser = Auth.currentUser();
 
   
@@ -95,12 +96,12 @@ angular.module('walkr-fit')
 
   $scope.currentUser = Auth.currentUser();
   var owner;
+  
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
     owner = w.owner[0];
-    console.log('w.owner is: ', owner);
     $scope.walkOwner = (($scope.currentUser._id == owner)? true : false);
-    console.log('walkOwner is: ', $scope.walkOwner);
+    $scope.guest = (($scope.currentUser._id == 1)? true : false);
   });
   console.log("walk is: ", $scope.walk);
 
