@@ -31,7 +31,6 @@ module.exports = function(app) {
    app.get('/api/walks/:id',function(req,res){   
     Walk.findById(req.params.id, function(err, walk) {
       if (err) { return res.status(404).send(err); }
-      console.log("walk is: ", walk);
       res.send(walk); 
     });
   });
@@ -41,14 +40,22 @@ module.exports = function(app) {
    // var walk = new Walk( req.body );
    // walk.save(function (err, walk) {
     Walk.create(req.body, function(err, walk){
-        console.log('req.body.owner is: ', req.body.owner );
-      console.log("walk created is: ", walk);
       if (err) { return res.send(err); }
         walk.owner.push(req.body.owner);
-        console.log('after push walk is: ', walk);
       res.status(201).send(walk);
     });
   });
+
+   // full update of one walk by id
+  app.put('/api/walks/:id', function(req,res){ 
+    console.log('hitting api/walks/:id path');
+    Walk.findOneAndUpdate({ _id: req.params.id}, req.body, { new: true }, function (err, walk) {
+      if (err) { return res.send(err); }
+      res.send(walk);
+    });
+  });
+
+
 
   // app.get('/api/posts/:post_id',function(req,res){   
   //   Post.findById(req.params.post_id, function(err, post) {

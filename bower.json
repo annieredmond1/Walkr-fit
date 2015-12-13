@@ -11,6 +11,7 @@
     "angular-route": "~1.4.8",
     "angular-google-places-autocomplete": "~0.2.7",
     "bootstrap-material-design": "~0.5.5",
-    "angular-material": "~0.11.4"
+    "angular-material": "~0.11.4",
+    "angular-xeditable": "~0.1.9"
   }
 }

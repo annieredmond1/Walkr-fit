@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			<div class="card card-block walk-show-card">
+			<div ng-hide="walkOwner" class="card card-block walk-show-card">
 			  <h1 class="card-text">{{walk.name}}</h1>
 				<br>
 				<h4 class="card-text">
@@ -12,13 +12,26 @@
 				</h4>
 
 				<p class="card-text">{{walk.description}}</p>
-				<div ng-show="walkOwner" class="owner-buttons">
-				  <button class="card-link">Edit Walk</button>
-				  <button class="card-link">Cancel Walk</button>
-				</div>
-				<div ng-hide="guest || walkOwner" class="non-owner-buttons">
+				<div ng-hide="guest" class="non-owner-buttons">
 				  <button class="card-link">RSVP</button>
 				  
+				</div>
+			</div>
+			<div ng-show="walkOwner" class="card card-block walk-show-card">
+			  <h1 class="card-text" editable-text="walk.name" onbeforesave="updateWalkName($data)">{{walk.name || 'empty' }}</h1>
+				<br>
+				<h4 class="card-text">
+				When: {{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}<br><br>
+				Where: {{walk.location.formatted_address}}
+				<br><br>
+				</h4>
+				<h4 class="card-text" editable-text="walk.distance">
+				Distance: {{walk.distance || empty }} mi.<br><br></h4>
+
+				<p class="card-text" editable-text="walk.description">{{walk.description || empty}}</p>
+				<div ng-show="walkOwner" class="owner-buttons">
+					<button ng-click="editWalk()" class="card-link">Edit Walk</button>
+				  <button class="card-link">Cancel Walk</button>
 				</div>
 			</div>
 		</div>

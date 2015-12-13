@@ -7,7 +7,8 @@ angular.module('walkr-fit', ['walkr-fit.services',
                               'satellizer',
                               'ui.bootstrap',
                               'ui.bootstrap.datetimepicker',
-                              'google.places'
+                              'google.places',
+                              'xeditable'
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -31,9 +32,16 @@ angular.module('walkr-fit', ['walkr-fit.services',
         templateUrl: 'templates/walk-show',
         controller: 'WalkShowCtrl'
       });
+      $routeProvider.when('/walks/:id/edit', {
+        templateUrl: 'templates/editWalkForm',
+        controller: 'WalkEditCtrl'
+      });
 
 
       $routeProvider.otherwise({redirectTo: '/'});
 
       $locationProvider.html5Mode(true);
-    }]);
+    }])
+    .run(function(editableOptions) {
+      editableOptions.theme = 'bs3'; 
+});
