@@ -93,7 +93,7 @@ angular.module('walkr-fit')
   };
   
 }])
-.controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$routeParams', function(Walk, Auth, $scope, $http, $timeout, $location, $routeParams) {
+.controller('WalkShowCtrl', ['$modal', 'Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$routeParams', function($modal, Walk, Auth, $scope, $http, $timeout, $location, $routeParams) {
   console.log('WalkShowCtrl active');
 
   $scope.currentUser = Auth.currentUser();
@@ -109,7 +109,24 @@ angular.module('walkr-fit')
   });
  
 
+  //Delete walk
+  $scope.deleteWalk = function(walk) {
+    Walk.delete({ id: $routeParams.id }, function(walk) {
 
+      $location.path('/walks');
+    });
+    
+  };
+//   $scope.deleteWalk = function(walk) {
+//       $confirm({text: 'Are you sure you want to permanently cancel this walk?', title: 'Confirm Delete', ok: 'Yes', cancel: 'No'})
+//         .then(function() {
+//           $scope.deletedConfirm = 'Deleted';
+//           Walk.delete({ id: $routeParams.id }, function(walk) {
+
+//             $location.path('/walks');
+//           });
+//   });
+// };
 
 
   //go to edit page

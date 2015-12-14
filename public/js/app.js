@@ -8,7 +8,8 @@ angular.module('walkr-fit', ['walkr-fit.services',
                               'ui.bootstrap',
                               'ui.bootstrap.datetimepicker',
                               'google.places',
-                              'xeditable'
+                              'xeditable',
+                              'ngConfirm'
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {

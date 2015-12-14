@@ -20,3 +20,5 @@ set login redirect dependent on page they were on when they logged in
 delete walks
 
 edit walk show only if owner otherwise message
+
+set watch on username so shows up immediately after rsvp click

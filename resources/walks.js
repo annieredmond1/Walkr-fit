@@ -50,7 +50,7 @@ module.exports = function(app) {
     });
   });
 
-   // full update of one walk by id
+   // UPDATE
   app.put('/api/walks/:id', function(req,res){ 
     console.log('hitting api/walks/:id path');
     Walk.findOneAndUpdate({ _id: req.params.id}, req.body, { new: true }, function (err, walk) {
@@ -59,6 +59,11 @@ module.exports = function(app) {
     });
   });
 
+  //DELETE
+  app.delete('/api/walks/:id', function(req,res) {
+    Walk.findById({ _id: req.params.id}).remove().exec();
+    res.sendStatus(200);
+  });
 
 
   // app.get('/api/posts/:post_id',function(req,res){   
