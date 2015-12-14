@@ -15,6 +15,12 @@ module.exports = function(app) {
     });
   });
 
+  // app.get('/api/users', function(req, res) {
+  //   User.findById(req.rsvpId, function(err, users) {
+  //     res.send(users);
+  //   });
+  // });
+
   app.put('/api/me', auth.ensureAuthenticated, function(req, res) {
     User.findById(req.userId, function(err, user) {
       if (!user) {

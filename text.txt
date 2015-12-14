@@ -6,11 +6,17 @@ calendar modal not closing
 
 validations
 
-search/filter options
+** search/filter options
 
-view walks on map
+** view walks on map
 
-add sign in or sign up pop up when guest clicks on walk
+** user's can rsvp for walks only one time
+
+set login redirect dependent on page they were on when they logged in
 
 
-set permissions on edit page
+** profile pic for users
+
+delete walks
+
+edit walk show only if owner otherwise message

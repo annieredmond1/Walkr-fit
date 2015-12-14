@@ -12,8 +12,9 @@
 				</h4>
 
 				<p class="card-text">{{walk.description}}</p>
-				<div ng-hide="guest" class="non-owner-buttons">
-				  <button class="card-link">RSVP</button>
+				<div class="non-owner-buttons">
+				  <button class="card-link" ng-click="rsvpWalk(walk)">RSVP</button><br>
+				  <div ng-show="guestClick" class="btn-toolbar"><p>Must have an account to RSVP<br><a data-toggle="modal" data-target="#login-modal" class="btn btn-sm btn-info">Register Now</a></div>
 				  
 				</div>
 			</div>
@@ -37,6 +38,17 @@
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
 			<h2>Who's going?</h2>
+			<ul class='media-list'>
+			  <li ng-repeat="user in rsvps" class='media'>
+			    <div class="media-left">
+			     User Pic
+			    </div>
+			    <div class="media-body">
+			        <h4 class="media-heading">{{user.username}}<br>
+			    </div>
+			    <hr>
+			  </li>
+			</ul>
 		</div>
 	</div>
 </div>

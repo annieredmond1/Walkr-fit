@@ -17,7 +17,7 @@ angular.module('walkr-fit')
         }
       }, function (data) {
         $auth.removeToken();
-        $location.path('/');
+        // $location.path('/');
       });
     };
 
@@ -49,6 +49,20 @@ angular.module('walkr-fit')
           console.log(response);
         });
     };
+
+    // $scope.loginGuest = function() {
+    //   var user = {email: 'guest@test.com', password: 'test'};
+    //   $auth.login(user)
+    //     .then(function(response) {
+    //       $auth.setToken(response.data.token);
+    //       $scope.isAuthenticated();
+    //       $scope.user = {};
+    //       $location.path('/walks');
+    //     })
+    //     .catch(function(response) {
+    //       console.log(response);
+    //     });
+    // };
 
     $scope.logout = function() {
       $auth.logout()

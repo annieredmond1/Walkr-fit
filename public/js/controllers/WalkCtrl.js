@@ -84,11 +84,12 @@ angular.module('walkr-fit')
   console.log("walks are: ", $scope.walks);
 
   $scope.walkShow = function(walk) {
-      Walk.get({ id: walk._id }, function(walk) {
-        $scope.walk = walk;
-    console.log('walk is; ', $scope.walk);
-    $location.path('/walks/' + walk._id);
-    });
+      console.log('currentUser is: ', $scope.currentUser);
+        Walk.get({ id: walk._id }, function(walk) {
+          $scope.walk = walk;
+      console.log('walk is; ', $scope.walk);
+      $location.path('/walks/' + walk._id);
+      }); 
   };
   
 }])
@@ -103,12 +104,37 @@ angular.module('walkr-fit')
     owner = w.owner[0];
     $scope.walkOwner = (($scope.currentUser._id == owner)? true : false);
     $scope.guest = (($scope.currentUser._id == 1)? true : false);
+    $scope.rsvps = w.rsvps;
+    
   });
-  console.log("walk is: ", $scope.walk);
+ 
+
+
+
 
   //go to edit page
   $scope.editWalk = function() {
     $location.path('/walks/' + $scope.walk._id + '/edit');
+  };
+
+
+  //To RSVP for walk
+  $scope.rsvpWalk = function(walk) {
+    if($scope.currentUser._id == 1) {
+        console.log('guest user');
+        $scope.guestClick = true;
+      } else {
+        console.log('currentUser is: ', $scope.currentUser);
+          Walk.get({ id: walk._id }, function(walk) {
+            $scope.walk = walk;
+            $scope.walk.rsvps.push($scope.currentUser);
+        $scope.walk.$update(function(walk) {
+        });
+
+        });
+        
+      }
+    
   };
   
 }])
