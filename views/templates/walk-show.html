@@ -13,7 +13,8 @@
 
 				<p class="card-text">{{walk.description}}</p>
 				<div class="non-owner-buttons">
-				  <button class="card-link" ng-click="rsvpWalk(walk)">RSVP</button><br>
+				  <button class="card-link" ng-show="!rsvpUser" ng-click="rsvpWalk(walk)">RSVP</button><br>
+				  <button class="card-link" ng-show="rsvpUser" ng-click="rsvpDelete(walk)">Cancel RSVP</button><br>
 				  <div ng-show="guestClick" class="btn-toolbar"><p>Must have an account to RSVP<br><a data-toggle="modal" data-target="#login-modal" class="btn btn-sm btn-info">Register Now</a></div>
 				  
 				</div>

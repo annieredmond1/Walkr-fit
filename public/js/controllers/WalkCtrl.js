@@ -98,6 +98,9 @@ angular.module('walkr-fit')
 
   $scope.currentUser = Auth.currentUser();
   var owner;
+  $scope.rsvpUser = false;
+  var indexOfCurrentUser;
+  console.log('rsvpUser', $scope.rsvpUser);
   
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
@@ -106,6 +109,14 @@ angular.module('walkr-fit')
     $scope.guest = (($scope.currentUser._id == 1)? true : false);
     $scope.rsvps = w.rsvps;
     
+    //check if current user has already rsvp'd
+    
+    for(var i=0; i<$scope.rsvps.length; i++) {
+      if($scope.rsvps[i]._id == $scope.currentUser._id) {
+        $scope.rsvpUser = true;
+        indexOfCurrentUser = i;
+      }
+    }  
   });
  
 
@@ -117,23 +128,11 @@ angular.module('walkr-fit')
     });
     
   };
-//   $scope.deleteWalk = function(walk) {
-//       $confirm({text: 'Are you sure you want to permanently cancel this walk?', title: 'Confirm Delete', ok: 'Yes', cancel: 'No'})
-//         .then(function() {
-//           $scope.deletedConfirm = 'Deleted';
-//           Walk.delete({ id: $routeParams.id }, function(walk) {
-
-//             $location.path('/walks');
-//           });
-//   });
-// };
-
 
   //go to edit page
   $scope.editWalk = function() {
     $location.path('/walks/' + $scope.walk._id + '/edit');
   };
-
 
   //To RSVP for walk
   $scope.rsvpWalk = function(walk) {
@@ -145,13 +144,24 @@ angular.module('walkr-fit')
           Walk.get({ id: walk._id }, function(walk) {
             $scope.walk = walk;
             $scope.walk.rsvps.push($scope.currentUser);
-        $scope.walk.$update(function(walk) {
-        });
-
-        });
+            $scope.walk.$update(function(walk) {
+            });
+          });
         
       }
     
+  };
+
+  //To CANCEL RSVP for a walk
+  $scope.rsvpDelete = function(walk) {
+    Walk.get({ id: walk._id }, function(walk) {
+      $scope.walk = walk;
+      $scope.walk.rsvps.splice(indexOfCurrentUser, 1);
+      console.log('walk after splice is: ', $scope.walk);
+      $scope.walk.$update(function(walk) {
+
+      });
+    });
   };
   
 }])

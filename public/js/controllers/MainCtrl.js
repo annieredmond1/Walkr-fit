@@ -30,6 +30,7 @@ angular.module('walkr-fit')
           $auth.setToken(response);
           $scope.isAuthenticated();
           $scope.user = {};
+          $('#login-modal').modal('hide');
           $location.path('/profile');
         })
         .catch(function(response) {
@@ -43,6 +44,7 @@ angular.module('walkr-fit')
           $auth.setToken(response.data.token);
           $scope.isAuthenticated();
           $scope.user = {};
+          $('#login-modal').modal('hide');
           $location.path('/profile');
         })
         .catch(function(response) {
@@ -50,19 +52,10 @@ angular.module('walkr-fit')
         });
     };
 
-    // $scope.loginGuest = function() {
-    //   var user = {email: 'guest@test.com', password: 'test'};
-    //   $auth.login(user)
-    //     .then(function(response) {
-    //       $auth.setToken(response.data.token);
-    //       $scope.isAuthenticated();
-    //       $scope.user = {};
-    //       $location.path('/walks');
-    //     })
-    //     .catch(function(response) {
-    //       console.log(response);
-    //     });
-    // };
+    //close modal when continue as guest
+    $scope.closeModal = function() {
+      $('#login-modal').modal('hide');
+    };
 
     $scope.logout = function() {
       $auth.logout()

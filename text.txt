@@ -1,7 +1,5 @@
 TODO 
 
-modals not closing on redirect
-
 calendar modal not closing
 
 validations
@@ -17,8 +15,6 @@ set login redirect dependent on page they were on when they logged in
 
 ** profile pic for users
 
-delete walks
-
 edit walk show only if owner otherwise message
 
-set watch on username so shows up immediately after rsvp click
+set watch on username so shows up immediately after rsvp click and disappears on cancel
