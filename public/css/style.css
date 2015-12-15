@@ -115,7 +115,10 @@ a {
 	cursor: pointer; 
 }
 
-
-
+#date-input {
+	max-width: 200px;
+	padding-left: 20px;
+	margin-top: 57px;
+}
 
 

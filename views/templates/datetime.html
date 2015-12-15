@@ -1,23 +1,7 @@
-
-
-    <!--   <pre>Selected time and date is: <em>{{date | date:'shortTime' }}, {{date | date:'fullDate' }}</em></pre> -->
-
-      
-
-      <div class="dropdown">
-  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">{{date | date:'fullDate' }} at {{date | date:'shortTime' }}
-    <div class="input-group"><input type="text" class="form-control" data-ng-model="data.dateDropDownInput"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-    </div>
-  </a>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-    <datetimepicker min-date="minDate" hour-step="hourStep" 
-      minute-step="minuteStep" ng-model="walk.date" show-meridian="showMeridian" 
-      date-format="dd-MMM-yyyy" date-options="dateOptions"
-      date-disabled="disabled(date, mode)" 
-      readonly-date="false"
-      hidden-time="false"
-      hidden-date="false" 
-      show-spinners="true"
-      readonly-time="false"></datetimepicker>
-  </ul>
-</div>
+<p class="input-group">
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+  </span>
+  <input type="text" id='date-input' class="form-control" uib-datepicker-popup="{{format}}" ng-model="walk.date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" /><br>
+  <uib-timepicker ng-model="walk.date" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="true"></uib-timepicker>
+</p>

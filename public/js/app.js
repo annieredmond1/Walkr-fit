@@ -6,7 +6,6 @@ angular.module('walkr-fit', ['walkr-fit.services',
                               'ngResource',
                               'satellizer',
                               'ui.bootstrap',
-                              'ui.bootstrap.datetimepicker',
                               'google.places',
                               'xeditable',
                               'ngConfirm'
