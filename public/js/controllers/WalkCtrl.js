@@ -178,8 +178,8 @@ angular.module('walkr-fit')
     
     //check if current user has already rsvp'd
     
-    for(var i=0; i<$scope.rsvps.length; i++) {
-      if($scope.rsvps[i]._id == $scope.currentUser._id) {
+    for(var i=0; i<$scope.walk.rsvps.length; i++) {
+      if($scope.walk.rsvps[i]._id == $scope.currentUser._id) {
         $scope.rsvpUser = true;
         indexOfCurrentUser = i;
       }
@@ -210,14 +210,14 @@ angular.module('walkr-fit')
         console.log('currentUser is: ', $scope.currentUser);
           Walk.get({ id: walk._id }, function(walk) {
             $scope.walk = walk;
-            $scope.walk.rsvps.push($scope.currentUser);
+            $scope.walk.rsvps.unshift($scope.currentUser);
             $scope.walk.$update(function(walk) {
             });
-          });
-        
-      }
-    
+            $scope.rsvpUser = true;
+          }); 
+      }   
   };
+
 
   //To CANCEL RSVP for a walk
   $scope.rsvpDelete = function(walk) {
@@ -228,6 +228,7 @@ angular.module('walkr-fit')
       $scope.walk.$update(function(walk) {
 
       });
+      $scope.rsvpUser = false;
     });
   };
   

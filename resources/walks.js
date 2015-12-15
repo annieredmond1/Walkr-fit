@@ -55,8 +55,7 @@ module.exports = function(app) {
     console.log('hitting api/walks/:id path');
     Walk.findOneAndUpdate({ _id: req.params.id}, req.body, { new: true }, function (err, walk) {
       if (err) { return res.send(err); }
-      console.log('req.body is: ', req.body);
-      console.log('walk is: ', walk);
+      console.log('updated walk is: ', walk);
       res.send(walk);
     });
   });
