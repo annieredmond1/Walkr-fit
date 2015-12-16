@@ -49,11 +49,11 @@ angular.module('walkr-fit', ['walkr-fit.services',
 
       if ($window.location.host == 'localhost') {
         $authProvider.facebook({        
-          clientId: '798017697011215'
+          clientId: '798448560301462'
         });
       } else {
         $authProvider.facebook({        
-          clientId: '798448560301462'
+          clientId: '798017697011215'
         });
       }
     })
