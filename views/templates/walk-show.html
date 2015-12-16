@@ -42,10 +42,10 @@
 			<ul class='media-list'>
 			  <li ng-repeat="user in walk.rsvps" class='media'>
 			    <div class="media-left">
-			     User Pic
+			     <img class="rsvp-pic img-circle media-object" src="{{user.picture}}" alt="http://i.imgur.com/7zEQjfQ.png">
 			    </div>
 			    <div class="media-body">
-			        <h4 class="media-heading">{{user.username}}<br>
+			        <h4 class="media-heading">{{user.displayName}}<br>
 			    </div>
 			    <hr>
 			  </li>

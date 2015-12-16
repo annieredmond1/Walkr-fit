@@ -12,12 +12,11 @@ function toLower (v) {
 var UserSchema = new Schema({
     created_at: { type: Date }, 
     updated_at: { type: Date }, 
-    email: { type: String, required: true, unique: true, trim: true, set: toLower }, 
-    password: { type: String, select: false }, 
-    username: { type: String, required: true, unique: true, trim: true }, 
-    first: { type: String, trim: true }, 
-    last: { type: String, trim: true },
-    waiver: { type: Boolean }
+    email: { type: String, unique: true, lowercase: true },
+    password: { type: String, select: false },
+    displayName: String,
+    picture: String,
+    facebook: String
 });
 
 //Virtual method for fullname
