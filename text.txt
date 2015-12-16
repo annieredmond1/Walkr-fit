@@ -8,3 +8,5 @@ set login redirect dependent on page they were on when they logged in
 
 ** view walks on map
 edit walk show only if owner otherwise message
+
+

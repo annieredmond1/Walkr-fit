@@ -78,71 +78,63 @@ module.exports = function(app) {
   });
 
   app.post('/auth/facebook', function(req, res) {
-  var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];
-  var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
-  var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + fields.join(',');
-  var params = {
-    code: req.body.code,
-    client_id: req.body.clientId,
-    client_secret: config.FACEBOOK_SECRET,
-    redirect_uri: req.body.redirectUri
-  };
+    var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];
+    var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
+    var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + fields.join(',');
+    var params = {
+      code: req.body.code,
+      client_id: req.body.clientId,
+      client_secret: config.FACEBOOK_SECRET,
+      redirect_uri: req.body.redirectUri
+    };
 
-  // Step 1. Exchange authorization code for access token.
-  request.get({ url: accessTokenUrl, qs: params, json: true }, function(err, response, accessToken) {
-    if (response.statusCode !== 200) {
-      return res.status(500).send({ message: accessToken.error.message });
-    }
-
-    // Step 2. Retrieve profile information about the current user.
-    request.get({ url: graphApiUrl, qs: accessToken, json: true }, function(err, response, profile) {
+    // Step 1. Exchange authorization code for access token.
+    request.get({ url: accessTokenUrl, qs: params, json: true }, function(err, response, accessToken) {
       if (response.statusCode !== 200) {
-        return res.status(500).send({ message: profile.error.message });
+        return res.status(500).send({ message: accessToken.error.message });
       }
-      console.log("here's the profile:", profile);
-      if (req.headers.authorization) {
-        User.findOne({ facebook: profile.id }, function(err, existingUser) {
-          if (existingUser) {
-            return res.status(409).send({ message: 'There is already a Facebook account that belongs to you' });
-          }
-          var token = req.headers.authorization.split(' ')[1];
-          var payload = jwt.decode(token, config.TOKEN_SECRET);
-          User.findById(payload.sub, function(err, user) {
-            if (!user) {
-              return res.status(400).send({ message: 'User not found' });
-            }
-            user.facebook = profile.id;
-            user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
-            user.displayName = user.displayName || profile.name;
-            user.save(function() {
-              var token = auth.createJWT(user);
-              res.send({ token: token });
-            });
-          });
-        });
-      } else {
+
+      // Step 2. Retrieve profile information about the current user.
+      request.get({ url: graphApiUrl, qs: accessToken, json: true }, function(err, response, profile) {
+        if (response.statusCode !== 200) {
+          return res.status(500).send({ message: profile.error.message });
+        }
+
         // Step 3b. Create a new user account or return an existing one.
         User.findOne({ facebook: profile.id }, function(err, existingUser) {
           if (existingUser) {
             var token = auth.createJWT(existingUser);
             return res.send({ token: token });
+          } else {
+            User.findOne({ email: profile.email }, function(err, existingUser) {
+              if (existingUser) {
+                existingUser.facebook = profile.id;
+                existingUser.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+
+                existingUser.save(function(err) {
+                  var token = auth.createJWT(existingUser);
+                  return res.send({ token: token });
+                });                
+              } else {
+                var user = new User();
+
+                user.email = profile.email;
+                user.facebook = profile.id;
+                user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+                user.displayName = profile.name;
+
+                user.save(function(err) {
+                  return res.status(500).send({ message: err });
+
+                  var token = auth.createJWT(user);
+                  res.send({ token: token });
+                });
+              }
+            });
           }
-          console.log("inside step 3b!!!!")
-          // var user = new User();
-          console.log("user after initialized")
-          // user.facebook = profile.id;
-          // user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
-          // user.displayName = profile.name;
-          User.create({facebook: profile.id, picture: 'https://graph.facebook.com/' + profile.id + '/picture?type=large', displayName: profile.name, email: profile.email }, function(err, user) {
-            if(err) {console.log(err)};
-            console.log("inside user save 3b!!!!", user);
-            var token = auth.createJWT(user);
-            res.send({ token: token });
-          });
         });
-      }
+      });
     });
-  });
 });
 
 app.post('/auth/unlink', auth.ensureAuthenticated, function(req, res) {
