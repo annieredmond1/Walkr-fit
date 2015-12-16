@@ -47,11 +47,14 @@ angular.module('walkr-fit', ['walkr-fit.services',
     .config(function($authProvider, $windowProvider) {
       var $window = $windowProvider.$get();
 
-      if ($window.location.host == 'localhost') {
+        console.log('window: ', $window.location.host);
+      if ($window.location.host == 'localhost:1337') {
+        console.log('development app');
         $authProvider.facebook({        
-          clientId: '798448560301462'
+          clientId: '798530816959903'
         });
       } else {
+        console.log('production app');
         $authProvider.facebook({        
           clientId: '798017697011215'
         });
