@@ -42,7 +42,7 @@ a {
   width: 300px;
 }
 
-.media-left {
+.calendar {
 	margin-right: 10px;
 	padding-top: 15px;
 }
@@ -111,7 +111,7 @@ a {
     background-color: #78FA89;
   }
 
-.media {
+.walk-media {
 	cursor: pointer; 
 }
 
@@ -119,6 +119,10 @@ a {
 	max-width: 200px;
 	padding-left: 20px;
 	margin-top: 57px;
+}
+
+.rsvp-pic {
+	max-width: 100px;
 }
 
 

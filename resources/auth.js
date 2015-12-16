@@ -25,9 +25,10 @@ module.exports = {
 	  req.userEmail = payload.email;
 	  req.userId = payload.sub;
 	  next();
-	},
+	}, 
 
 	createJWT: function(user) {
+		console.log('user is: ', user); 
 	  var payload = {
 	    sub: user._id,
 	    email: user.email,

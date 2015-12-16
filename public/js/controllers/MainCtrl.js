@@ -65,4 +65,13 @@ angular.module('walkr-fit')
           $location.path('/');
         });
     };
+
+
+    //FACEBOOK
+    $scope.authenticate = function(provider) {
+      $auth.authenticate(provider).then(function() {
+        $('#login-modal').modal('hide');
+        $location.path('/profile'); 
+      });
+    };
   }]);

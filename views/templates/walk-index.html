@@ -14,8 +14,8 @@
 
 
       <ul class='media-list'>
-        <li ng-click="walkShow(walk)" ng-repeat="walk in walks | orderBy:'date' | filter:search:strict"  class='media'>
-          <div class="media-left">
+        <li ng-click="walkShow(walk)" ng-repeat="walk in walks | orderBy:'date' | filter:search:strict"  class='media walk-media'>
+          <div class="media-left calendar">
             
               <div class="row date-top text-center white-font black-back">
               {{walk.date | date: 'MMM'}}
