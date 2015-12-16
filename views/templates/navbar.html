@@ -51,8 +51,8 @@
         </div>
       </li> -->
     <ul class="nav navbar-nav navbar-right">
-      <li ng-show="currentUser" class="dropdown">
-        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span class="status">{{currentUser.displayName}}</span><span class="caret"></span></a>
+      <li ng-if="currentUser" class="dropdown">
+        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span class="status">{{user.displayName}}</span><span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/profile">Profile</a></li>
           <!-- <li><a href="/settings">Settings</a></li> -->
@@ -62,7 +62,7 @@
       </li>
     </ul>
 
-    <div class="nav navbar-nav navbar-right"><a data-toggle="modal" data-target="#login-modal" ng-hide="currentUser" class="navbar-btn btn btn-info">SignUp/Login</a></div>
+    <div class="nav navbar-nav navbar-right"><a data-toggle="modal" data-target="#login-modal" ng-if="!currentUser" class="navbar-btn btn btn-default">SignUp/Login</a></div>
   </div>
 </nav>
 <div id="login-modal" tabindex="-1" role="dialog" class="modal fade">

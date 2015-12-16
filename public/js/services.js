@@ -6,15 +6,18 @@
 angular.module('walkr-fit.services', [])
   //get the current user
   .factory('Auth', ['$auth', function ($auth) {
+
     return {
       currentUser: function() {
         var user = $auth.getPayload();
         var currentUser = {_id: 1}; 
         if(user) {
           currentUser = {
-            _id: user.sub 
+            _id: user.sub,
+            displayName: user.displayName 
           };
         }
+        console.log('current user in function is: ', currentUser);
         return currentUser;
       }
     };

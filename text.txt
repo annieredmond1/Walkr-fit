@@ -1,8 +1,6 @@
 TODO 
 
-** profile pic for users and/or facebook login 
-
-validations
+navbar link and rsvp not working until refresh
 
 set login redirect dependent on page they were on when they logged in
 

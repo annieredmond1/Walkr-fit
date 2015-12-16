@@ -207,15 +207,20 @@ angular.module('walkr-fit')
         console.log('guest user');
         $scope.guestClick = true;
       } else {
-        console.log('currentUser is: ', $scope.currentUser);
           Walk.get({ id: walk._id }, function(walk) {
             $scope.walk = walk;
             $scope.walk.rsvps.unshift($scope.currentUser);
             $scope.walk.$update(function(walk) {
+              Walk.get({id: walk._id}, function(walk) {
+                $scope.walk.rsvps = walk.rsvps;
+                console.log('walk.rsvps is: ', $scope.walk.rsvps);
+              });
+            
             });
             $scope.rsvpUser = true;
           }); 
-      }   
+      } 
+        
   };
 
 
@@ -226,7 +231,6 @@ angular.module('walkr-fit')
       $scope.walk.rsvps.splice(indexOfCurrentUser, 1);
       console.log('walk after splice is: ', $scope.walk);
       $scope.walk.$update(function(walk) {
-
       });
       $scope.rsvpUser = false;
     });

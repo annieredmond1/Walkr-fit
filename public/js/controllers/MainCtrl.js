@@ -3,7 +3,7 @@
 /* MAIN Controller */
 
 angular.module('walkr-fit')
-  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http',  function ($scope, $rootScope, $location, $auth, $http) {
+  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', 'Auth',  function($scope, $rootScope, $location, $auth, $http, Auth) {
 
     // LOGIN/REGISTER
     $scope.user = {};
@@ -70,6 +70,10 @@ angular.module('walkr-fit')
     //FACEBOOK
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider).then(function() {
+        console.log('auth.cu is: ', Auth.currentUser);
+        $scope.currentUser = Auth.currentUser();
+        $scope.user = $scope.currentUser;
+        console.log('navbar currentuser is: ', $scope.currentUser);
         $('#login-modal').modal('hide');
         $location.path('/profile'); 
       });
