@@ -46,7 +46,8 @@ angular.module('walkr-fit', ['walkr-fit.services',
     .config(function($authProvider) {
 
     $authProvider.facebook({
-      clientId: '798017697011215' || '798448560301462'
+      clientId: '798017697011215'
+
     });
 
     })
