@@ -43,12 +43,12 @@ require('./resources/walks')(app);
 
 
 // Force HTTPS on Heroku
-if (app.get('env') === 'production') {
-  app.use(function(req, res, next) {
-    var protocol = req.get('x-forwarded-proto');
-    protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
-  });
-}
+// if (app.get('env') === 'production') {
+//   app.use(function(req, res, next) {
+//     var protocol = req.get('x-forwarded-proto');
+//     protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
+//   });
+// }
 
 
 // redirect all others to the index (HTML5 history)
