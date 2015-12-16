@@ -1,6 +1,6 @@
 TODO 
 
-navbar link and rsvp not working until refresh
+HEROKU!!!!!
 
 set login redirect dependent on page they were on when they logged in
 

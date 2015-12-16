@@ -128,7 +128,7 @@ module.exports = function(app) {
           user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
           user.displayName = profile.name;
           user.save(function() {
-            var token = createJWT(user);
+            var token = auth.createJWT(user);
             res.send({ token: token });
           });
         });
