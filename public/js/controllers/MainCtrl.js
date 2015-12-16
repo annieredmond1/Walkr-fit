@@ -69,8 +69,9 @@ angular.module('walkr-fit')
 
     //FACEBOOK
     $scope.authenticate = function(provider) {
-      $auth.authenticate(provider);
-      $('#login-modal').modal('hide');
-      $location.path('/profile');
+      $auth.authenticate(provider).then(function() {
+        $('#login-modal').modal('hide');
+        $location.path('/profile'); 
+      });
     };
   }]);

@@ -8,7 +8,7 @@ angular.module('walkr-fit')
       $scope.user = data.data;
     console.log('user is: ', $scope.user);
     });
-
+    $scope.currentUser = Auth.currentUser;
     $scope.myWalks = Walk.myWalks();
 
     $scope.walkShow = function(walk) {

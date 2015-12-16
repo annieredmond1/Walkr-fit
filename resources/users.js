@@ -60,12 +60,15 @@ module.exports = function(app) {
         email: req.body.email,
         password: req.body.password
       });
+      console.log('user is: ', user);
 
       user.save(function(err, result) {
+        console.log('entering user.save function');
         if (err) {
           res.status(500).send({ message: err.message });
         }
-        res.send({ token: createJWT(result) });
+        console.log('result is: ', result);
+        res.send({ token: auth.createJWT(result) });
       });
     });
   });
