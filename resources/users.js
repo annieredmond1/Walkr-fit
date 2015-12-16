@@ -11,7 +11,11 @@ module.exports = function(app) {
 
   app.get('/api/me', auth.ensureAuthenticated, function(req, res) {
     User.findById(req.userId, function(err, user) {
+      if(err){console.log(err)
+      }else{
+      console.log("here's the api/me user: ", user)
       res.send(user);
+    }
     });
   });
 
@@ -95,7 +99,7 @@ module.exports = function(app) {
       if (response.statusCode !== 200) {
         return res.status(500).send({ message: profile.error.message });
       }
-      console.log(profile);
+      console.log("here's the profile:", profile);
       if (req.headers.authorization) {
         User.findOne({ facebook: profile.id }, function(err, existingUser) {
           if (existingUser) {
@@ -123,11 +127,15 @@ module.exports = function(app) {
             var token = auth.createJWT(existingUser);
             return res.send({ token: token });
           }
-          var user = new User();
-          user.facebook = profile.id;
-          user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
-          user.displayName = profile.name;
-          user.save(function() {
+          console.log("inside step 3b!!!!")
+          // var user = new User();
+          console.log("user after initialized")
+          // user.facebook = profile.id;
+          // user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+          // user.displayName = profile.name;
+          User.create({facebook: profile.id, picture: 'https://graph.facebook.com/' + profile.id + '/picture?type=large', displayName: profile.name, email: profile.email }, function(err, user) {
+            if(err) {console.log(err)};
+            console.log("inside user save 3b!!!!", user);
             var token = auth.createJWT(user);
             res.send({ token: token });
           });
