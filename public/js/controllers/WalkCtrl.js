@@ -105,8 +105,7 @@ angular.module('walkr-fit')
       
       //for entering location
       $scope.autocompleteOptions = {
-          componentRestrictions: { country: 'usa' },
-          types: ['geocode']
+          componentRestrictions: { country: 'usa' }
       };
       
       //Get walks
@@ -345,8 +344,7 @@ angular.module('walkr-fit')
 
       //for entering location
       $scope.autocompleteOptions = {
-          componentRestrictions: { country: 'usa' },
-          types: ['geocode']
+          componentRestrictions: { country: 'usa' }
       };
   
   //Get walk

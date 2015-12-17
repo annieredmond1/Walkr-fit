@@ -9,3 +9,5 @@ set login redirect dependent on page they were on when they logged in
 edit walk show only if owner otherwise message
 
 do something with previous walks/only show current
+
+fix address input to do attractions also
