@@ -1,16 +1,32 @@
 <div class="jumbotron">
-  <div class="container text-center">
-    <h1>WHY WALK ALONE?</h1>
-    <h1>LET'S WALK TOGETHER!</h1>
-    <div class="lead">Register. Connect. Walk Anywhere. It's free.</div>
-    <div ng-hide="currentUser" class="btn-toolbar"><a data-toggle="modal" data-target="#login-modal" class="btn btn-lg btn-info">Get Started</a></div>
-    <div ng-show="currentUser" class="btn-toolbar"><a href="/walks" class="btn btn-lg btn-info">Find a Walk</a></div>
-  </div>
+
+    <div class="col-sm-8 col-sm-offset-4">
+      <h1 class="lime-green">WHY WALK ALONE?</h1>
+      <h1 class="white-font">LET'S WALK TOGETHER!</h1>
+      <!-- <div class="lead">Register. Connect. Walk Anywhere. It's free.</div> -->
+      <div ng-hide="currentUser" class="btn-toolbar"><a data-toggle="modal" data-target="#login-modal" class="btn btn-lg btn-info get-started">Get Started</a></div>
+      <div ng-show="currentUser" class="btn-toolbar"><a href="/walks" class="btn btn-lg btn-info">Find a Walk</a></div>
+      
+    </div>
 </div>
+<section id="about">
+  <div class="container">
+    <div class="row text-center">
+    <a href="#about"><i id="down-arrow" class="ion-arrow-down-b"></i></a>
+        <h2 class="pink-text">Register. Connect. Walk.</h2>
+        <h4 class="grey-text">The Walkr App connects and motivates neighbors, coworkers and friends to stay healthy by leading and joining walks!</h4>
+    </div>
+    
+
+</div>
+</section>
+<section class="other-stuff">
 <div class="container">
   <div class="row">
-    <div class="col-sm-4"><h3>Our Mission</h3></div>
-    <div class="col-sm-4"><h3>Why Walkr</h3></div>
-    <div class="col-sm-4"><h3>Coming Soon</h3></div>
-  </div>
+      <div class="col-sm-4"><h3>Our Mission</h3></div>
+      <div class="col-sm-4"><h3>Why Walkr</h3></div>
+      <div class="col-sm-4"><h3>Coming Soon</h3></div>
+    </div>
+  </div> 
 </div>
+  </section>

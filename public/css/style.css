@@ -11,19 +11,42 @@
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 
-.body {
+body {
 	font-family: 'Muli', sans-serif;
-	background-image: url('//nebula.wsimg.com/17ca41a5d67102c10a5b4f432e85b78f?AccessKeyId=4C2E80CDD7D2CF3131B0&disposition=0&alloworigin=1');
+	background-color: #F9F9F9;
 }
+
+
 h1, h2, h3, h4, h5 {
 	font-family: 'Ovo', serif;
+	font-weight: bolder;
 }
 .jumbotron {
-  padding:100px 0 130px 0;
+  padding-left:100px;
+  min-height: 600px;
+	background-image: url('http://i.imgur.com/zBiAUlF.png?1');
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom-left-radius: 150em 30em;
+	border-bottom-right-radius: 150em 30em;
+	
+}
+
+
+.get-started {
+	margin-top: 100px;
 }
 
 .navbar-right {
     margin-right: 0;
+}
+
+#about {
+	min-height: 300px;
+}
+
+#down-arrow {
+	font-size: 50px;
 }
 
 .btn-toolbar {
@@ -34,8 +57,9 @@ a {
     cursor: pointer;
 }
 
-.navbar {
+nav.navbar.navbar-default {
   margin:0;
+  background-color: #F9F9F9;
 }
 
 .dropdown-form {
@@ -49,7 +73,7 @@ a {
 }
 
 .white-font {
-	color: white;
+	color: white !important;
 }
 .black-back {
 	background-color: black;
@@ -151,5 +175,19 @@ a {
 }
 
 .input-group .btn {
-	background-color: white;
+	background-color: #F9F9F9;
+	color: grey;
 }
+
+.lime-green {
+	color: #00FF00 !important;
+}
+
+.pink-text {
+	color: #CC5A5A;
+}
+
+.grey-text {
+	color: #6C6C6C;
+}
+
