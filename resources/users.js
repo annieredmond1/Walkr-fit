@@ -91,11 +91,13 @@ module.exports = function(app) {
     // Step 1. Exchange authorization code for access token.
     request.get({ url: accessTokenUrl, qs: params, json: true }, function(err, response, accessToken) {
       if (response.statusCode !== 200) {
+        console.log('hit step 1');
         return res.status(500).send({ message: accessToken.error.message });
       }
 
       // Step 2. Retrieve profile information about the current user.
       request.get({ url: graphApiUrl, qs: accessToken, json: true }, function(err, response, profile) {
+        console.log('hit step 2');
         if (response.statusCode !== 200) {
           return res.status(500).send({ message: profile.error.message });
         }
@@ -108,6 +110,7 @@ module.exports = function(app) {
           } else {
             User.findOne({ email: profile.email }, function(err, existingUser) {
               if (existingUser) {
+                console.log('hit 3b existing user');
                 existingUser.facebook = profile.id;
                 existingUser.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
 
@@ -116,6 +119,7 @@ module.exports = function(app) {
                   return res.send({ token: token });
                 });                
               } else {
+                console.log('hit 3b new user');
                 var user = new User();
 
                 user.email = profile.email;

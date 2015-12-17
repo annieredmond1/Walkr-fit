@@ -31,7 +31,10 @@ angular.module('walkr-fit.services', [])
       },
        myWalks: {
         method: 'GET', url: '/api/my-walks', isArray: true
-      }
+      },
+       rsvpWalks: {
+        method: 'GET', url: 'api/rsvp-walks', isArray: true
+       }
     });
 
 

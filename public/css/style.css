@@ -13,6 +13,7 @@
 
 .body {
 	font-family: 'Muli', sans-serif;
+	background-image: url('//nebula.wsimg.com/17ca41a5d67102c10a5b4f432e85b78f?AccessKeyId=4C2E80CDD7D2CF3131B0&disposition=0&alloworigin=1');
 }
 h1, h2, h3, h4, h5 {
 	font-family: 'Ovo', serif;
@@ -125,4 +126,30 @@ a {
 	max-width: 100px;
 }
 
+.btn {
+	background-color: #CC5A5A;
+	color: white;	
+}
 
+.btn:hover {
+	background-color: #ba3939;	
+	color: white;
+}
+
+
+.btn-facebook {
+	background-color: #3B5998;
+	color: white;
+}
+.btn-facebook:hover {
+	background-color: #2d4373 !important;
+	color: white;
+}
+
+.modal-body {
+	margin: 30px;
+}
+
+.input-group .btn {
+	background-color: white;
+}

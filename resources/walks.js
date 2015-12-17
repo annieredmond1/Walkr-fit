@@ -27,6 +27,18 @@ module.exports = function(app) {
     });    
   });
 
+   //get walks rsvp'd by current user
+  app.get('/api/rsvp-walks', auth.ensureAuthenticated, function(req, res){
+    // INDEX - GET ALL POSTS
+    console.log('made it to route');
+    Walk.find({rsvps: req.userId}).sort('-created_at').exec(function(err, walks) {
+      if (err) { return res.status(404).send(err); }
+      console.log('walks returned: ', walks);
+      res.send(walks);
+
+    });    
+  });
+
   //get walk by id
    app.get('/api/walks/:id',function(req,res){   
     Walk.findById(req.params.id)

@@ -90,4 +90,5 @@ angular.module('walkr-fit')
           }
         });
     };
+    
   }]);

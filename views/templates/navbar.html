@@ -52,7 +52,7 @@
       </li> -->
     <ul class="nav navbar-nav navbar-right">
       <li ng-if="currentUser" class="dropdown">
-        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span class="status">{{user.displayName}}</span><span class="caret"></span></a>
+        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span class="status">menu</span><span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/profile">Profile</a></li>
           <!-- <li><a href="/settings">Settings</a></li> -->
@@ -62,13 +62,21 @@
       </li>
     </ul>
 
-    <div class="nav navbar-nav navbar-right"><a data-toggle="modal" data-target="#login-modal" ng-if="!currentUser" class="navbar-btn btn btn-default">SignUp/Login</a></div>
+    <!-- <div class="nav navbar-nav navbar-right"><a data-toggle="modal" data-target="#login-modal" ng-if="!currentUser" class="navbar-btn btn btn-default">SignUp/Login</a></div> -->
   </div>
 </nav>
 <div id="login-modal" tabindex="-1" role="dialog" class="modal fade">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body text-center">
+        <button class="btn btn-block btn-facebook" ng-click="authenticate('facebook')">
+          <i class="ion-social-facebook"></i> Sign in with Facebook
+        </button> 
+        <br>
+        <h4>Or</h4>
+        
+        <br>
+        <h5><a href="/walks" ng-click='closeModal()'>Continue as guest</a></h5>
         <!-- <div ng-show="err" class="alert alert-danger">{{err}}</div>
         <form novalidate class="input-form">
           <div ng-show="signupMode" class="form-group">
@@ -92,14 +100,8 @@
       <div class="modal-footer"><!-- <a ng-click="signupMode = true" ng-hide="signupMode" class="btn btn-link">Sign Up</a>
         <button type="submit" ng-hide="signupMode" ng-click="login()" class="btn btn-info">Log In</button><a ng-click="signupMode = false" ng-show="signupMode" class="btn btn-link">Log In</a>
         <button type="submit" ng-cloak="" ng-show="signupMode" ng-click="signup()" class="btn btn-info">Sign Up</button><br> -->
-        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true">
-          <button class="btn btn-block btn-facebook" ng-click="authenticate('facebook')">
-          <i class="ion-social-facebook"></i> Sign in with Facebook
-        </button>
+        
           
-        </div>
-
-        <a href="/walks" ng-click='closeModal()'>Continue as guest</a>
 
       </div>
     </div>
