@@ -16,12 +16,14 @@ html,body {
 
 body {
 	font-family: 'Muli', sans-serif;
+	background-color: white;
 }
 
-
-h1, h2, h3, h4, h5 {
-	font-family: 'Ovo', serif;
-	font-weight: bolder;
+.grey-back {
+	background-color: #f9f9f9;
+}
+form {
+	background-color: white;
 }
 .jumbotron {
   padding-left:100px;
@@ -60,9 +62,10 @@ a {
     cursor: pointer;
 }
 
-nav.navbar.navbar-default {
-  margin:0;
-  background-color: #F9F9F9;
+.navbar {
+  margin:0px;
+  background-color: #f9f9f9;
+  border: none !important;
 }
 
 .dropdown-form {
@@ -82,11 +85,19 @@ nav.navbar.navbar-default {
 	background-color: black;
 }
 
+.pink-back {
+	background-color: #922d2d;
+}
+.pink-font {
+	color: #922d2d;
+}
+
 .date-top {
 	width: 100px;
 	height: 30px;
 	font-size: 20px;
 	margin-left: 0px;
+	border: 1px solid black;
 	
 }
 
@@ -104,7 +115,8 @@ nav.navbar.navbar-default {
 	height: 25px;
 	width: 100px;
 	font-size: 15px;
-	margin: 0px
+	margin: 0px;
+	border: 1px solid black;
 }
 
 .panel {
@@ -178,7 +190,7 @@ nav.navbar.navbar-default {
 }
 
 .input-group .btn {
-	background-color: #F9F9F9;
+	background-color: white;
 	color: grey;
 }
 
