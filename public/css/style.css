@@ -10,6 +10,9 @@
 /*for ui.bootstrap*/
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
+html,body {
+	overflow-x: hidden;
+}
 
 body {
 	font-family: 'Muli', sans-serif;

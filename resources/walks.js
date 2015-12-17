@@ -42,7 +42,7 @@ module.exports = function(app) {
   //get walk by id
    app.get('/api/walks/:id',function(req,res){   
     Walk.findById(req.params.id)
-      .populate('rsvps')
+      .populate('rsvps owner')
       .exec(function(err, walk) {
       console.log('req.params.id is: ', req.params.id);
       console.log('walk is: ', walk);

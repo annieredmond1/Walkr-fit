@@ -1,12 +1,11 @@
 TODO 
 
-profile page - rsvps and created
-
 set login redirect dependent on page they were on when they logged in
 
 ** search/filter options
 
 ** view walks on map
+
 edit walk show only if owner otherwise message
 
-
+do something with previous walks/only show current

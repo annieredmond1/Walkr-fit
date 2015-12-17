@@ -167,14 +167,16 @@ angular.module('walkr-fit')
   var owner;
   $scope.rsvpUser = false;
   var indexOfCurrentUser;
-  console.log('rsvpUser', $scope.rsvpUser);
+
   
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
     owner = w.owner[0];
-    $scope.walkOwner = (($scope.currentUser._id == owner)? true : false);
+    console.log('owner is: ', owner);
+    $scope.walkOwner = (($scope.currentUser._id == owner._id)? true : false);
     $scope.guest = (($scope.currentUser._id == 1)? true : false);
     $scope.rsvps = w.rsvps;
+    $scope.leader = owner;
     
     //check if current user has already rsvp'd
     

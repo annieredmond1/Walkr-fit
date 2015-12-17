@@ -38,8 +38,17 @@
 			</div>
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
-			<h2>Who's going?</h2>
+			<h3>Who's going?</h3>
 			<ul class='media-list'>
+				<li class='media'> 
+			    <div class="media-left">
+			     <img class="rsvp-pic img-circle media-object" src="{{leader.picture}}" alt="">
+			    </div>
+			    <div class="media-body">
+			        <h4 class="media-heading">{{leader.displayName}}<br>
+			    </div> <p class="pull-right">- walk host</p>
+			    <hr>
+			  </li>
 			  <li ng-repeat="user in walk.rsvps" class='media'>
 			    <div class="media-left">
 			     <img class="rsvp-pic img-circle media-object" src="{{user.picture}}" alt="">
