@@ -16,7 +16,6 @@ html,body {
 
 body {
 	font-family: 'Muli', sans-serif;
-	background-color: #F9F9F9;
 }
 
 
@@ -32,6 +31,7 @@ h1, h2, h3, h4, h5 {
 	background-size: cover;
 	border-bottom-left-radius: 150em 30em;
 	border-bottom-right-radius: 150em 30em;
+	background-color: white;
 	
 }
 
@@ -193,4 +193,21 @@ nav.navbar.navbar-default {
 .grey-text {
 	color: #6C6C6C;
 }
+
+.angular-google-map-container { 
+	height: 400px; 
+}
+#google-map { 
+	height: 400px;
+	background-color: black; 
+}
+
+
+
+
+
+
+
+
+
 

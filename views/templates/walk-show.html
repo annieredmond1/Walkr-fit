@@ -2,16 +2,18 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<div ng-hide="walkOwner" class="card card-block walk-show-card">
-			  <h1 class="card-text">{{walk.name}}</h1>
+			  <h2 class="card-text">{{walk.name}}</h2>
 				<br>
 				<h4 class="card-text">
-				When: {{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}<br><br>
-				Where: {{walk.location.formatted_address}}
+				{{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}<br><br>
+				{{walk.location.formatted_address}}
 				<br><br>
-				Distance: {{walk.distance}} mi.<br><br>
+				{{walk.distance}} mi.<br><br>
 				</h4>
 
-				<p class="card-text">{{walk.description}}</p>
+				<h4 class="card-text">
+				Other info:<br>
+				{{walk.description}}</h4>
 				<div class="non-owner-buttons">
 				  <button class="card-link" ng-show="!rsvpUser" ng-click="rsvpWalk(walk)">RSVP</button><br>
 				  <button class="card-link" ng-show="rsvpUser" ng-click="rsvpDelete(walk)">Cancel RSVP</button><br>
@@ -23,14 +25,16 @@
 			  <h1 class="card-text">{{walk.name || 'empty' }}</h1>
 				<br>
 				<h4 class="card-text">
-				When: {{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}<br><br>
-				Where: {{walk.location.formatted_address}}
+				{{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}<br><br>
+				{{walk.location.formatted_address}}
 				<br><br>
 				</h4>
 				<h4 class="card-text">
-				Distance: {{walk.distance || empty }} mi.<br><br></h4>
+				{{walk.distance || empty }} mi.<br><br></h4>
 
-				<p class="card-text">{{walk.description || empty}}</p>
+				<h4 class="card-text">
+				Other info:<br><br>
+				{{walk.description || empty}}</h4><br><br>
 				<div ng-show="walkOwner" class="owner-buttons">
 					<button ng-click="editWalk()" class="card-link">Edit Walk</button>
 				  <button ng-confirm="Are you sure?" ng-click="deleteWalk(walk)" class="card-link">Cancel Walk</button>

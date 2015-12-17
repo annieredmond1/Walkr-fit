@@ -157,6 +157,25 @@ angular.module('walkr-fit')
       $location.path('/walks/' + walk._id);
       }); 
   };
+
+  //google maps api
+
+  // $scope.map = new google.maps.Map(document.getElementById('map'), {
+  //   center: {lat: -34.397, lng: 150.644},
+  //   zoom: 6
+  // });
+  // $scope.infoWindow = new google.maps.InfoWindow({map: map});
+
+  // $scope.markers = [];
+  //   for(var i = 0; i < $scope.walks; i++) {
+  //     console.log($scope.walks[i].location);
+  //     $scope.markers.push($scope.walks[i].location);
+  //   };
+  // console.log('its: ', uiGmapGoogleMapApi);
+  // uiGmapGoogleMapApi.then(function(maps) {
+  //   });
+  //   $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+  //   console.log('map is', $scope.map);
   
 }])
 .controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$routeParams', function(Walk, Auth, $scope, $http, $timeout, $location, $routeParams) {

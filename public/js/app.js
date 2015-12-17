@@ -2,6 +2,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('walkr-fit', ['walkr-fit.services',
+                              'ngLodash',
                               'ngRoute',
                               'ngResource',
                               'satellizer',
@@ -9,7 +10,8 @@ angular.module('walkr-fit', ['walkr-fit.services',
                               'google.places',
                               'xeditable',
                               'ngConfirm',
-                              'toastr'
+                              'toastr',
+                              'uiGmapgoogle-maps'
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -60,7 +62,13 @@ angular.module('walkr-fit', ['walkr-fit.services',
         });
       }
     })
-
+    // .config(function(uiGmapGoogleMapApiProvider) {
+    //   uiGmapGoogleMapApiProvider.configure({
+    //       //    key: 'your api key',
+    //       v: '3.20', //defaults to latest 3.X anyhow
+    //       libraries: 'weather,geometry,visualization'
+    //   });
+    // })
     .run(function(editableOptions) {
       editableOptions.theme = 'bs3'; 
     });
