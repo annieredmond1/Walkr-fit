@@ -225,7 +225,20 @@ a {
 	margin-top: 80px;
 }
 
+.profile-btn {
+  color: black;
+  text-decoration: none; /* no underline */
+  background-color: white;
 
+}
+.profile-btn:hover {
+  color: white;
+  text-decoration: none; /* no underline */
+  background-color: gray;
+  
+}
 
-
+.no-border {
+	border: none;
+}
 
