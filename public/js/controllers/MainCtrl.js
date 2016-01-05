@@ -3,7 +3,7 @@
 /* MAIN Controller */
 
 angular.module('walkr-fit')
-  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', 'Auth', 'toastr', function($scope, $rootScope, $location, $auth, $http, Auth, toastr) {
+  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', 'Auth', 'toastr', '$route', function($scope, $rootScope, $location, $auth, $http, Auth, toastr, $route) {
 
     // LOGIN/REGISTER
     $scope.user = {};
@@ -31,7 +31,7 @@ angular.module('walkr-fit')
           $scope.isAuthenticated();
           $scope.user = {};
           $('#login-modal').modal('hide');
-          $location.path('/profile');
+          // $location.path('/profile');
         })
         .catch(function(response) {
           console.log(response);
@@ -45,7 +45,7 @@ angular.module('walkr-fit')
           $scope.isAuthenticated();
           $scope.user = {};
           $('#login-modal').modal('hide');
-          $location.path('/profile');
+          // $location.path('/profile');
         })
         .catch(function(response) {
           console.log(response);
@@ -70,17 +70,26 @@ angular.module('walkr-fit')
     //FACEBOOK
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider).then(function() {
+        //notify user they have succesfully logged in with facebook
         toastr.success('You have successfully signed in with ' + provider + '!');
-        console.log('auth.cu is: ', Auth.currentUser);
+        //set current user
         $scope.currentUser = Auth.currentUser();
+        //set user
         $scope.user = $scope.currentUser;
-        console.log('navbar currentuser is: ', $scope.currentUser);
+        //hide login modal
         $('#login-modal').modal('hide');
-        $location.path('/profile'); 
+        //check if on splash page
+        if($route.current.loadedTemplateUrl === 'templates/splash') {
+          //redirect to profile page
+          $location.path('/profile');
+        } else {
+          //reload current page
+          $route.reload(); 
+        }
       })
       .catch(function(error) {
           if (error.error) {
-            // Popup error - invalid redirect_uri, pressed cancel button, etc.
+            // popup error
             toastr.error(error.error);
           } else if (error.data) {
             // HTTP response error from server
