@@ -202,7 +202,7 @@ angular.module('walkr-fit')
   //set facebook share url to the current url
   console.log(document.URL);
   $('.fb-share-button').attr("data-href", document.URL);
-  
+  FB.XFBML.parse();
 
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
