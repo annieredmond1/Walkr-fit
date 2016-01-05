@@ -119,6 +119,11 @@ a {
 	border: 1px solid black;
 }
 
+a.walk-index-btn {
+	margin: 100px 0px 50px 0px;
+	background-color: #922d2d;
+}
+
 .panel {
 	margin-bottom: 0px;
 }

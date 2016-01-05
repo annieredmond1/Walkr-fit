@@ -1,7 +1,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4"><br>
+    <div class="col-sm-4">
+      <a class="walk-index-btn btn" ng-click="createWalk()">Create a Walk!</a>
+        <div ng-show="guestClick" class="btn-toolbar"><p>Must have an account to Create a walk<br><a data-toggle="modal" data-target="#login-modal" class="btn btn-sm btn-info">Register Now</a></div>
+      <br>
       <h3>Search By:</h3><br>
       <label>Title:<br> <input ng-model="search.name"></label><br><br>
       <label>Distance(in miles):<br> <input ng-model="search.distance"></label><br><br>

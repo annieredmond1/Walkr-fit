@@ -158,6 +158,19 @@ angular.module('walkr-fit')
       }); 
   };
 
+  //when createWalk button is clicked
+  $scope.createWalk = function() {
+    //check if user is guest for creating walk button
+    if($scope.currentUser._id == 1) {
+        //set guestClick to true so user will be prompted to sign in
+        $scope.guestClick = true;
+      } else {
+          //redirect to create walk page
+          $location.path('/createwalk');
+      } 
+        
+  };
+
   //google maps api
 
   // $scope.map = new google.maps.Map(document.getElementById('map'), {
