@@ -199,7 +199,11 @@ angular.module('walkr-fit')
   $scope.rsvpUser = false;
   var indexOfCurrentUser;
 
+  //set facebook share url to the current url
+  console.log(document.URL);
+  $('.fb-share-button').attr("data-href", document.URL);
   
+
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
     owner = w.owner[0];
