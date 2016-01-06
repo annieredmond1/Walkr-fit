@@ -17,7 +17,6 @@ angular.module('walkr-fit.services', [])
             displayName: user.displayName 
           };
         }
-        console.log('current user in function is: ', currentUser);
         return currentUser;
       }
     };

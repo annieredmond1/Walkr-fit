@@ -11,13 +11,11 @@ angular.module('walkr-fit')
     $scope.currentUser = Auth.currentUser;
     $scope.myWalks = Walk.myWalks();
     $scope.rsvpWalks = Walk.rsvpWalks();
-    console.log('rsvpwalks is: ', $scope.rsvpwalks);
 
 
     $scope.walkShow = function(walk) {
       Walk.get({ id: walk._id }, function(walk) {
         $scope.walk = walk;
-    console.log('walk is; ', $scope.walk);
     $location.path('/walks/' + walk._id);
     });
   };

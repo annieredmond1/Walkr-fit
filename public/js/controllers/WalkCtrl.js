@@ -115,7 +115,6 @@ angular.module('walkr-fit')
 
       //find current user
       $scope.currentUser = Auth.currentUser();
-      console.log('current user is: ', $scope.currentUser);
 
       //go back button
       $scope.backButton = function() {
@@ -127,7 +126,6 @@ angular.module('walkr-fit')
       $scope.newWalk = function() {
       $scope.walk.owner = $scope.currentUser;
       var walk = new Walk($scope.walk);
-      console.log('walk created is: ', walk);
       walk.$save(function(data) {
         $scope.walks.unshift(data);
         $scope.walk = {};
@@ -147,13 +145,10 @@ angular.module('walkr-fit')
 
   //Get walks
   $scope.walks = Walk.query();
-  console.log("walks are: ", $scope.walks);
 
   $scope.walkShow = function(walk) {
-      console.log('currentUser is: ', $scope.currentUser);
         Walk.get({ id: walk._id }, function(walk) {
           $scope.walk = walk;
-      console.log('walk is; ', $scope.walk);
       $location.path('/walks/' + walk._id);
       }); 
   };
@@ -200,14 +195,13 @@ angular.module('walkr-fit')
   var indexOfCurrentUser;
 
   //set facebook share url to the current url
-  console.log(document.URL);
   $('.fb-share-button').attr("data-href", document.URL);
+  //parse FB so share button will load
   FB.XFBML.parse();
 
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
     owner = w.owner[0];
-    console.log('owner is: ', owner);
     $scope.walkOwner = (($scope.currentUser._id == owner._id)? true : false);
     $scope.guest = (($scope.currentUser._id == 1)? true : false);
     $scope.rsvps = w.rsvps;
@@ -241,7 +235,6 @@ angular.module('walkr-fit')
   //To RSVP for walk
   $scope.rsvpWalk = function(walk) {
     if($scope.currentUser._id == 1) {
-        console.log('guest user');
         $scope.guestClick = true;
       } else {
           Walk.get({ id: walk._id }, function(walk) {
@@ -250,7 +243,6 @@ angular.module('walkr-fit')
             $scope.walk.$update(function(walk) {
               Walk.get({id: walk._id}, function(walk) {
                 $scope.walk.rsvps = walk.rsvps;
-                console.log('walk.rsvps is: ', $scope.walk.rsvps);
               });
             
             });
@@ -266,7 +258,6 @@ angular.module('walkr-fit')
     Walk.get({ id: walk._id }, function(walk) {
       $scope.walk = walk;
       $scope.walk.rsvps.splice(indexOfCurrentUser, 1);
-      console.log('walk after splice is: ', $scope.walk);
       $scope.walk.$update(function(walk) {
       });
       $scope.rsvpUser = false;
