@@ -1,6 +1,12 @@
 TODO 
 
-set login redirect dependent on page they were on when they logged in
+mobile responsive
+
+** regular login
+
+** share walks via email
+
+** recurring walks
 
 ** search/filter options
 
