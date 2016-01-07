@@ -153,6 +153,7 @@ a.walk-index-btn {
 }
 .card {
 	margin-top: 20px;
+	word-wrap: break-word;
 }
 
 .input-form input.ng-invalid.ng-touched {
