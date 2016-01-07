@@ -53,10 +53,12 @@ form {
 
 #about {
 	min-height: 600px;
+	margin-top: 300px;
 }
 
 #down-arrow {
 	font-size: 50px;
+	
 }
 
 .btn-toolbar {
@@ -195,6 +197,14 @@ a.walk-index-btn {
 	color: white;
 }
 
+.fb-share-button {
+	transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+}
+
 .modal-body {
 	margin: 30px;
 }
@@ -252,3 +262,71 @@ a.walk-index-btn {
 	border: none;
 }
 
+/*ipad*/
+@media (max-width: 768px) {
+	h1.card-text {
+		font-size: 40px;
+	}
+	h4.card-text {
+		font-size: 20px;
+	}
+	.card-block h4 {
+		font-size: 20px;
+	}
+	#about {
+		margin-top: 300px;
+	}
+}
+
+@media (max-width: 500px) {
+	.fb-share-button {
+		padding-right: 10px;
+	}
+}
+
+/*iphone 6 plus*/
+@media (max-width: 415px) {
+	.jumbotron {
+		min-height: 500px;
+	}
+	h5.bottom {
+		font-size: 15px;
+	}
+	.media-body h5 {
+		font-size: 15px;
+	}
+	.media-body h4 {
+		font-size: 18px;
+	}
+	a.walk-index-btn {
+		margin: 10px 0px 5px 0px;
+	}
+	.walk-index-page h3 {
+		font-size: 18px;
+		margin: 15px 0px 5px 0px;
+	}
+}
+
+/*iphone 6*/
+@media (max-width: 375px) {
+	.jumbotron {
+		min-height: 400px;
+	}
+	.footer {
+		min-height: 50px;
+	}
+
+	.bottom {
+		margin-top: 0px;
+	}
+	.media-body h4 {
+		font-size: 17px;
+	}
+	.media-body h5 {
+		font-size: 13px;
+	}
+}
+
+/*iphone 5*/
+
+}
