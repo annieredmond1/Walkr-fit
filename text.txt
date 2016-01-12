@@ -1,6 +1,6 @@
 TODO 
 
-mobile responsive
+ng-cloak
 
 ** regular login
 

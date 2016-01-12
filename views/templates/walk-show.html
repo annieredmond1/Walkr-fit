@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-cloak>
 	<div class="row">
 		<div class="col-sm-6">
 			<div ng-hide="walkOwner" class="card card-block walk-show-card">
@@ -13,57 +13,72 @@
 
 				<h4 class="card-text">
 					Other info:<br>
-					{{walk.description}}</h4>
-					<div class="non-owner-buttons">
-						<button class="card-link" ng-show="!rsvpUser" ng-click="rsvpWalk(walk)">RSVP</button><br>
-						<button class="card-link" ng-show="rsvpUser" ng-click="rsvpDelete(walk)">Cancel RSVP</button><br>
-						<div ng-show="guestClick" class="btn-toolbar"><p>Must have an account to RSVP<br><a data-toggle="modal" data-target="#login-modal" class="btn btn-sm btn-info">Register Now</a></div>
-						<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>
-					</div>
-				</div>
-				<div ng-show="walkOwner" class="card card-block walk-show-card">
-					<h1 class="card-text">{{walk.name || 'empty' }}</h1>
+					{{walk.description}}
+				</h4>
+				<div class="non-owner-buttons">
+					<button class="card-link" ng-show="!rsvpUser" ng-click="rsvpWalk(walk)">RSVP
+					</button>
 					<br>
-					<h4 class="card-text">
-						{{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}<br><br>
-						{{walk.location.formatted_address}}
-						<br><br>
-					</h4>
-					<h4 class="card-text">
-						{{walk.distance || empty }} mi.<br><br></h4>
+					<button class="card-link" ng-show="rsvpUser" ng-click="rsvpDelete(walk)">Cancel RSVP
+					</button>
+					<br>
+					<div ng-show="guestClick" class="btn-toolbar">
+						<p>Must have an account to RSVP
+						<br>
+						<a data-toggle="modal" data-target="#login-modal" class="btn btn-sm btn-info">Register Now</a>
+					</div>
+					<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>
+				</div>
+			</div>
+			<div ng-show="walkOwner" class="card card-block walk-show-card">
+				<h1 class="card-text">{{walk.name || 'empty' }}</h1>
+				<br>
+				<h4 class="card-text">
+					{{walk.date | date: 'longDate'}} at {{walk.date | date: 'shortTime'}}
+					<br><br>
+					{{walk.location.formatted_address}}
+					<br><br>
+				</h4>
+				<h4 class="card-text">
+					{{walk.distance || empty }} mi.<br><br></h4>
 
-						<h4 class="card-text">
-							Other info:<br><br>
-							{{walk.description || empty}}</h4><br><br>
-							<div ng-show="walkOwner" class="owner-buttons">
-								<button ng-click="editWalk()" class="card-link">Edit Walk</button>
-								<button ng-confirm="Are you sure?" ng-click="deleteWalk(walk)" class="card-link">Cancel Walk</button>
-								<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>
-							</div>
-						</div>
+				<h4 class="card-text">
+					Other info:<br><br>
+					{{walk.description || empty}}
+				</h4>
+				<br><br>
+				<div ng-show="walkOwner" class="owner-buttons">
+					<button ng-click="editWalk()" class="card-link">Edit Walk
+					</button>
+					<button ng-confirm="Are you sure?" ng-click="deleteWalk(walk)" class="card-link">Cancel Walk
+					</button>
+					<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
+			<h3>Who's going?</h3>
+			<ul class='media-list'>
+				<li class='media'> 
+					<div class="media-left">
+						<img class="rsvp-pic img-circle media-object" src="{{leader.picture}}" alt="">
 					</div>
-					<div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
-						<h3>Who's going?</h3>
-						<ul class='media-list'>
-							<li class='media'> 
-								<div class="media-left">
-									<img class="rsvp-pic img-circle media-object" src="{{leader.picture}}" alt="">
-								</div>
-								<div class="media-body">
-									<h4 class="media-heading">{{leader.displayName}}<br>
-									</div> <p class="pull-right">- walk host</p>
-									<hr>
-								</li>
-								<li ng-repeat="user in walk.rsvps" class='media'>
-									<div class="media-left">
-										<img class="rsvp-pic img-circle media-object" src="{{user.picture}}" alt="">
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">{{user.displayName}}<br>
-										</div>
-										<hr>
-									</li>
-								</ul>
-							</div>
-						</div>
+					<div class="media-body">
+						<h4 class="media-heading">{{leader.displayName}}<br>
+					</div> 
+					<p class="pull-right">- walk host</p>
+					<hr>
+				</li>
+				<li ng-repeat="user in walk.rsvps" class='media'>
+					<div class="media-left">
+						<img class="rsvp-pic img-circle media-object" src="{{user.picture}}" alt="">
 					</div>
+					<div class="media-body">
+						<h4 class="media-heading">{{user.displayName}}<br>
+					</div>
+					<hr>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
