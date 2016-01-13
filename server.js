@@ -15,7 +15,8 @@ var config = require('./config'),
     cors = require('cors'), 
     logger = require('morgan'), 
     server = app.listen(config.port), 
-    mongoose  = require('mongoose');
+    mongoose  = require('mongoose'),
+    moment = require('moment');
 
 mongoose.connect(config.db);
 

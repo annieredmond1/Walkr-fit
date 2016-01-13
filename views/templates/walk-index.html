@@ -5,6 +5,7 @@
       <a class="walk-index-btn btn" ng-click="createWalk()">Create a Walk!</a>
         <div ng-show="guestClick" class="btn-toolbar"><p>Must have an account to Create a walk<br><a data-toggle="modal" data-target="#login-modal" class="btn btn-sm btn-info">Register Now</a></div>
       <br>
+      <label>Show past walks <input type="checkbox" ng-model="checkboxModel.pastWalks"></label><br><br>
       <h3>Search By:</h3><br>
       <label>Title:<br> <input ng-model="search.name"></label><br><br>
       <label>Distance(in miles):<br> <input ng-model="search.distance"></label><br><br>
@@ -13,7 +14,7 @@
     </div>
     <div class="col-sm-8">
 
-      <h2 class="text-center">All Walks</h2>
+      <!-- <h2 class="text-center">Upcoming Walks</h2> -->
 
       <div class="tag-container">
 
@@ -25,7 +26,28 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="list">
             <ul class='media-list'>
-              <li ng-click="walkShow(walk)" ng-repeat="walk in walks | orderBy:'date' | filter:search:strict"  class='media walk-media'>
+              <li ng-show="checkboxModel.pastWalks" ng-click="walkShow(walk)" ng-repeat="walk in pastWalks | orderBy:'date' | filter:search:strict" class='media walk-media'>
+                <div class="media-left calendar">
+
+                  <div class="row date-top text-center white-font pink-back">
+                    {{walk.date | date: 'MMM'}}
+                  </div>
+                  <div class="row date-middle text-center">
+                    {{walk.date | date: 'd'}}
+                  </div>
+                  <div class="row date-bottom text-center white-font pink-back">
+                    {{walk.date | date: 'EEEE'}}
+                  </div>
+
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{walk.name}}<br><small>{{walk.date | date: 'MMMM d' }} at {{walk.date | date: 'h:mm a'}}</small></h4>
+                  <h5>{{walk.distance}} mi.<br>
+                    {{walk.location.formatted_address}}</h5>
+                  </div>
+                  <hr>
+                </li>
+              <li ng-click="walkShow(walk)" ng-repeat="walk in upcomingWalks | orderBy:'date' | filter:search:strict"  class='media walk-media'>
                 <div class="media-left calendar">
 
                   <div class="row date-top text-center white-font pink-back">

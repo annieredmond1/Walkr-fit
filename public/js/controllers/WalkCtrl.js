@@ -143,8 +143,40 @@ angular.module('walkr-fit')
 
   
 
-  //Get walks
-  $scope.walks = Walk.query();
+  //Get walks split by past or future
+
+    //query walks and use then to wait til promise is fullfilled
+    Walk.query().$promise.then(function(response) {
+      //create variable for all walks
+      $scope.walks = response;
+      //create varialble for upcoming walks
+      $scope.upcomingWalks = [];
+      //create variable to past walks
+      $scope.pastWalks = [];
+      //set currentDate variable in milliseconds
+      var currentDate = +new Date();
+      console.log('current date is: ', currentDate);
+      //loop through walks
+      for(var i=0; i<$scope.walks.length; i++) {
+        //set walk date variable to be walk date in milliseconds
+        var walkDate = +new Date($scope.walks[i].date);
+        //check if walk date is greater than current date (for future walks)
+        if(walkDate > currentDate) {
+          //push walk into upcoming walks array
+          $scope.upcomingWalks.push($scope.walks[i]);  
+        } else {
+          //push walk into past walks array
+          $scope.pastWalks.push($scope.walks[i]);
+        }
+      }
+    });
+
+
+    //set past walks property on checkbox to false
+    $scope.checkboxModel = {
+      pastWalks : false
+    };
+
 
   $scope.walkShow = function(walk) {
         Walk.get({ id: walk._id }, function(walk) {
@@ -196,6 +228,7 @@ angular.module('walkr-fit')
 
   //set facebook share url to the current url
   $('.fb-share-button').attr("data-href", document.URL);
+
   //parse FB so share button will load
   FB.XFBML.parse();
 
