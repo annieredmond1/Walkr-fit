@@ -16,4 +16,8 @@ edit walk show only if owner otherwise message
 
 do something with previous walks/only show current
 
+add image to top of walk list
+
+include search features from the home page - look at airbnb
+
 
