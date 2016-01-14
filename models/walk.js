@@ -10,7 +10,7 @@ var WalkSchema = new Schema({
     date: { type: Date, required: true }, 
     location: { type: Object, required: true }, 
     distance: { type: String, required: true },
-    description: {type: String, required: true}, 
+    description: {type: String, default: "N/A" }, 
     owner: [{type: Schema.Types.ObjectId, ref: 'User'}], 
     rsvps: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
