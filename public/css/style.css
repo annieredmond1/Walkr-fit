@@ -15,7 +15,7 @@
   display: none !important;
 }
 
-html,body {
+body {
 	overflow-x: hidden;
 }
 
@@ -30,10 +30,10 @@ body {
 form {
 	background-color: white;
 }
-.jumbotron {
+.splash-jumbotron {
   padding-left:100px;
   min-height: 600px;
-	background-image: url('http://i.imgur.com/zBiAUlF.png?1');
+	background-image: url('http://i.imgur.com/ivTI4Z1.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-bottom-left-radius: 150em 30em;
@@ -80,6 +80,12 @@ a {
   width: 300px;
 }
 
+.walk-index-jumbotron {
+	background-image: url('http://i.imgur.com/7KfnyKa.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 210px;
+}
 .calendar {
 	margin-right: 10px;
 	padding-top: 15px;
@@ -198,12 +204,16 @@ a.walk-index-btn {
 	color: white;
 }
 
+.fb-share-div {
+	display: inline-block;
+}
 .fb-share-button {
-	transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  -o-transform: scale(1.5);
-  -moz-transform: scale(1.5);
+	transform: scale(2.5);
+  -ms-transform: scale(2.5);
+  -webkit-transform: scale(2.5);
+  -o-transform: scale(2.5);
+  -moz-transform: scale(2.5);
+  display:inline-block;
 }
 
 .modal-body {
@@ -287,7 +297,7 @@ a.walk-index-btn {
 
 /*iphone 6 plus*/
 @media (max-width: 415px) {
-	.jumbotron {
+	.splash-jumbotron {
 		min-height: 500px;
 	}
 	h5.bottom {
@@ -310,7 +320,7 @@ a.walk-index-btn {
 
 /*iphone 6*/
 @media (max-width: 375px) {
-	.jumbotron {
+	.splash-jumbotron {
 		min-height: 400px;
 	}
 	.footer {
