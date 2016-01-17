@@ -3,7 +3,7 @@
 /* USER Controllers */
 
 angular.module('walkr-fit')
-  .controller('ProfileCtrl', ['Walk', '$scope', '$http', '$auth', 'Auth', '$location', function(Walk, $scope, $http, $auth, Auth, $location) {
+  .controller('ProfileCtrl', ['Walk', '$scope', '$http', '$auth', 'Auth', '$location', '$window', function(Walk, $scope, $http, $auth, Auth, $location, $window) {
     console.log('profile ctrl active');
     $http.get('/api/me').then(function(data) {
       $scope.user = data.data;
@@ -14,7 +14,8 @@ angular.module('walkr-fit')
     $scope.walkShow = function(walk) {
       Walk.get({ id: walk._id }, function(walk) {
         $scope.walk = walk;
-    $location.path('/walks/' + walk._id);
+        //used window.location to redirect so facebook share button shows up
+        $window.location.href = '/walks/' + walk._id;
     });
   };
 

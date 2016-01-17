@@ -135,7 +135,7 @@ angular.module('walkr-fit')
 
       
   }])
-.controller('WalkListCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', function(Walk, Auth, $scope, $http, $timeout, $location) {
+.controller('WalkListCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$window', function(Walk, Auth, $scope, $http, $timeout, $location, $window) {
   console.log('WalkListCtrl active');
 
 
@@ -181,7 +181,8 @@ angular.module('walkr-fit')
   $scope.walkShow = function(walk) {
         Walk.get({ id: walk._id }, function(walk) {
           $scope.walk = walk;
-      $location.path('/walks/' + walk._id);
+          //used window.location to redirect so facebook share button shows up
+          $window.location.href = '/walks/' + walk._id;
       }); 
   };
 
@@ -221,6 +222,8 @@ angular.module('walkr-fit')
 .controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$routeParams', function(Walk, Auth, $scope, $http, $timeout, $location, $routeParams) {
   console.log('WalkShowCtrl active');
 
+
+
   $scope.currentUser = Auth.currentUser();
   var owner;
   $scope.rsvpUser = false;
@@ -228,9 +231,6 @@ angular.module('walkr-fit')
 
   //set facebook share url to the current url
   $('.fb-share-button').attr("data-href", document.URL);
-
-  //parse FB so share button will load
-  FB.XFBML.parse();
 
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
