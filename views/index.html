@@ -20,6 +20,12 @@
 </head>
 <body ng-controller="MainCtrl">
 
+  
+  
+  
+  <ng-include src="'templates/navbar'"></ng-include>
+  <div ng-view="ng-view"></div>
+
   <!-- for facebook share -->
   <div id="fb-root"></div>
   <script>
@@ -27,7 +33,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=798017697011215";
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=true&version=v2.5&appId=798017697011215";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
   //added so facebook share button will show w/o page refresh
@@ -35,12 +41,6 @@
     FB.XFBML.parse();
    };
    </script>
-  
-  
-  
-  <ng-include src="'templates/navbar'"></ng-include>
-  <div ng-view="ng-view"></div>
-
 
   <!-- for google analytics -->
 
