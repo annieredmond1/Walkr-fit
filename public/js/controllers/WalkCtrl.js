@@ -238,7 +238,7 @@ angular.module('walkr-fit')
 
   $(document).ready(function() {
     console.log('document ready');
-    $('.fb-share-div').append('<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>');
+      $('.fb-share-div').append('<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>'); 
   });
 
   //set facebook share url to the current url
