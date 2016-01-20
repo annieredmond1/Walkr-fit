@@ -232,12 +232,19 @@ angular.module('walkr-fit')
   //add facebook share button to html
   $window.fbAsyncInit = function(){
     console.log('fb async function run in controller');
-    
+
     
    };
 
   $(document).ready(function() {
     console.log('document ready');
+    
+    if(typeof FB !== 'undefined') {
+
+        FB.XFBML.parse();
+      
+    }
+
       // $('.fb-share-div').append('<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>'); 
   });
 
