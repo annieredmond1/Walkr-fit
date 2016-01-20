@@ -229,31 +229,15 @@ angular.module('walkr-fit')
   $scope.rsvpUser = false;
   var indexOfCurrentUser;
 
-  //add facebook share button to html
-  $window.fbAsyncInit = function(){
-    console.log('fb async function run in controller');
-
-    
-   };
-
+  //run xfbml.parse after page has loaded (only if FB is defined)
   $(document).ready(function() {
-    console.log('document ready');
-    
     if(typeof FB !== 'undefined') {
-
-        FB.XFBML.parse();
-      
+        FB.XFBML.parse();   
     }
-
-      // $('.fb-share-div').append('<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>'); 
   });
 
   //set facebook share url to the current url
   $('.fb-share-button').attr("data-href", document.URL);
-
-
-
-
 
   //Get walk
   $scope.walk = Walk.get({ id: $routeParams.id }, function(w) {
