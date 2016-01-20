@@ -30,6 +30,10 @@
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=798017697011215";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+  //added so facebook share button will show w/o page refresh
+  window.fbAsyncInit = function(){
+    FB.XFBML.parse();
+   };
    </script>
   
   
