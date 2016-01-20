@@ -219,7 +219,7 @@ angular.module('walkr-fit')
   //   console.log('map is', $scope.map);
   
 }])
-.controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$routeParams', function(Walk, Auth, $scope, $http, $timeout, $location, $routeParams) {
+.controller('WalkShowCtrl', ['Walk', 'Auth', '$scope', '$http', '$timeout', '$location', '$routeParams', '$window', function(Walk, Auth, $scope, $http, $timeout, $location, $routeParams, $window) {
   console.log('WalkShowCtrl active');
 
 
@@ -230,7 +230,7 @@ angular.module('walkr-fit')
   var indexOfCurrentUser;
 
   //add facebook share button to html
-  window.fbAsyncInit = function(){
+  $window.fbAsyncInit = function(){
     console.log('fb async function run');
     $('.fb-share-div').append('<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>');
     FB.XFBML.parse();
