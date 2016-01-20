@@ -48,8 +48,6 @@ angular.module('walkr-fit', ['walkr-fit.services',
 
     .config(function($authProvider, $windowProvider) {
       var $window = $windowProvider.$get();
-
-        console.log('window: ', $window.location.host);
       if ($window.location.host == 'localhost:1337') {
         console.log('development app');
         $authProvider.facebook({        

@@ -231,7 +231,8 @@ angular.module('walkr-fit')
 
   //add facebook share button to html
   $window.fbAsyncInit = function(){
-    console.log('fb async function run');
+    console.log('fb async function run in controller');
+    
     
    };
 
