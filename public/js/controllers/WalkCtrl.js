@@ -229,6 +229,9 @@ angular.module('walkr-fit')
   $scope.rsvpUser = false;
   var indexOfCurrentUser;
 
+  //add facebook share button to html
+  $('.fb-share-div').append('<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>');
+
   //set facebook share url to the current url
   $('.fb-share-button').attr("data-href", document.URL);
 
