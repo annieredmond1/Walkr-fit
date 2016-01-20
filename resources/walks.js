@@ -33,7 +33,6 @@ module.exports = function(app) {
     console.log('made it to route');
     Walk.find({rsvps: req.userId}).sort('-created_at').exec(function(err, walks) {
       if (err) { return res.status(404).send(err); }
-      console.log('walks returned: ', walks);
       res.send(walks);
 
     });    
@@ -44,8 +43,6 @@ module.exports = function(app) {
     Walk.findById(req.params.id)
       .populate('rsvps owner')
       .exec(function(err, walk) {
-      console.log('req.params.id is: ', req.params.id);
-      console.log('walk is: ', walk);
       if (err) { return res.status(404).send(err); }
       res.send(walk); 
     });
@@ -67,7 +64,6 @@ module.exports = function(app) {
     console.log('hitting api/walks/:id path');
     Walk.findOneAndUpdate({ _id: req.params.id}, req.body, { new: true }, function (err, walk) {
       if (err) { return res.send(err); }
-      console.log('updated walk is: ', walk);
       res.send(walk);
     });
   });
@@ -79,27 +75,6 @@ module.exports = function(app) {
   });
 
 
-  // app.get('/api/posts/:post_id',function(req,res){   
-  //   Post.findById(req.params.post_id, function(err, post) {
-  //     if (err) { return res.status(404).send(err); }
-  //     res.send(post); 
-  //   });
-  // });
 
-  //   // full update of one post by id
-  // app.put('/api/posts/:post_id', function(req,res){ 
-  //   Post.findOneAndUpdate({ _id: req.params.post_id}, req.query.post, function (err, post) {
-  //     if (err) { return res.send(err); }
-  //     res.send(post);
-  //   });
-  // })
-
-  //   // delete one post by id
-  // app.delete('/api/posts/:post_id', function(req,res){   
-  //   Post.findByIdAndRemove(req.params.post_id, function (err, post) {
-  //     if (err) { return res.send(err); }
-  //     res.status(200).send('Success');
-  //   });
-  // });
  
 };
