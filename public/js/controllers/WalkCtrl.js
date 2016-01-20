@@ -231,8 +231,9 @@ angular.module('walkr-fit')
 
   //add facebook share button to html
   window.fbAsyncInit = function(){
+    console.log('fb async function run');
     $('.fb-share-div').append('<div class="fb-share-button pull-right" data-href="https://walkr.fit" data-layout="icon_link"></div>');
-    
+    FB.XFBML.parse();
    };
 
   //set facebook share url to the current url
