@@ -60,6 +60,9 @@
           <li><a ng-click="logout()">Logout</a></li>
         </ul>
       </li>
+      <li ng-if="!currentUser" class="dropdown">
+        <a data-toggle="modal" data-target="#login-modal">Sign In</a>
+      </li>
     </ul>
   </div>
     <!-- <div class="nav navbar-nav navbar-right"><a data-toggle="modal" data-target="#login-modal" ng-if="!currentUser" class="navbar-btn btn btn-default">SignUp/Login</a></div> -->
